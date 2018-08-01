@@ -1,0 +1,75 @@
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="header">Anwendungsdefinierte Konvertierer: Kreditkarten</ui:define>
+	
+	<ui:define name="main">	
+	
+		<h:panelGrid>
+			<f:facet name="header">Achtung</f:facet>
+			Die Alternativen mit value und classFor sind nicht gleichzeitig möglich, siehe Buch!
+		</h:panelGrid>
+		
+		<br/>
+		<br/>
+		
+		<h:panelGrid id="alt1" columns="3">
+			
+			<h:outputText value="Kreditkartennummer:" />
+			<h:panelGroup>
+				<h:inputText id="cc1" value="#{ccc.creditCard1}" />
+				<h:message for="cc1" errorStyle="color: red;" />
+			</h:panelGroup>
+			<h:commandButton value="Abschicken">
+				<f:ajax execute="cc1" render="selected alt1 alt2" listener="#{ccc.ajaxBehaviorListener}" />
+			</h:commandButton>
+		</h:panelGrid>
+
+		<br/>
+		<br/>
+		
+		<h:panelGrid id="alt2" columns="3">
+			<f:facet name="header">Konvertierer mit &lt;h:inputText converter=...&gt;</f:facet>
+			<h:outputText value="Kreditkartennummer:" />
+			<h:panelGroup>
+				<h:inputText id="cc2" value="#{ccc.creditCard2}" converter="creditcard" converterMessage="ganz falsch"/>
+				<h:message for="cc2" errorStyle="color: red;" />
+			</h:panelGroup>
+			<h:commandButton value="Abschicken">
+				<f:ajax execute="cc2" render="selected alt1 alt2" listener="#{ccc.ajaxBehaviorListener}" />
+			</h:commandButton>
+		</h:panelGrid>
+
+		<br/>
+		<br/>
+		
+		<h:panelGrid id="alt3" columns="3">
+			<f:facet name="header">Konvertierer mit &lt;f:convert converterId=...&gt;</f:facet>
+			<h:outputText value="Kreditkartennummer:" />
+			<h:panelGroup>
+				<h:inputText id="cc3" value="#{ccc.creditCard3}">
+					<f:converter converterId="creditcard" />
+				</h:inputText>
+				<h:message for="cc3" errorStyle="color: red;" />
+			</h:panelGroup>
+			<h:commandButton value="Abschicken">
+				<f:ajax execute="cc3" render="selected alt1 alt2 alt3" listener="#{ccc.ajaxBehaviorListener}" />
+			</h:commandButton>
+		</h:panelGrid>
+
+		<br/>
+		<br/>
+		
+		<h:panelGrid id="selected" columns="1">
+			<f:facet name="header">Konvertierte Kreditkartennummer</f:facet>
+			Gewählt wurde: #{ccc.creditCardSelected}
+		</h:panelGrid>
+		
+		
+	</ui:define>
+
+</ui:composition>

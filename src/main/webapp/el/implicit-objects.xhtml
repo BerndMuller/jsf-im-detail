@@ -1,0 +1,48 @@
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="header">Expression Language: Vordefinierte Variablen</ui:define>
+	
+	<ui:define name="main">
+
+		<h:panelGrid columns="4">
+			<f:facet name="header">Vordefinierte Variablen</f:facet>
+			
+			<h:outputText value="User-Agent: \#{header['User-Agent']}" />
+			<h:outputText value="User-Agent: #{header['User-Agent']}" />
+			<h:outputText value="User-Agent: \#{ioc.header.get('User-Agent')}" />
+			<h:outputText value="User-Agent: #{ioc.header.get('User-Agent')}" />
+			
+			<h:outputText value="Lokalisiert auf \#{view.locale}" />
+			<h:outputText value="Lokalisiert auf #{view.locale}" />
+			<h:outputText value="Lokalisiert auf \#{ioc.view.locale}" />
+			<h:outputText value="Lokalisiert auf #{ioc.view.locale}" />
+			
+			<h:outputText value="Zustand gespeichert auf \#{initParam['javax.faces.STATE_SAVING_METHOD']}" />
+			<h:outputText value="Zustand gespeichert auf #{initParam['javax.faces.STATE_SAVING_METHOD']}" />
+			<h:outputText value="Zustand gespeichert auf \#{ioc.initParam.get('javax.faces.STATE_SAVING_METHOD')}" />
+			<h:outputText value="Zustand gespeichert auf #{ioc.initParam.get('javax.faces.STATE_SAVING_METHOD')}" />
+		</h:panelGrid>
+		
+		<br/>
+		<br/>
+		
+		<h:panelGrid columns="2">
+			<f:facet name="header">Aufgaben</f:facet>
+			<h:outputText value="Zustand gespeichert auf \#{ioc.stateSavingMethod}" />
+			<h:outputText value="Zustand gespeichert auf #{ioc.stateSavingMethod}" />
+			
+			<h:outputText value="Sprachen: \#{headerValues['Accept-Language'][0]}" />
+			<h:outputText value="Sprachen: #{headerValues['Accept-Language'][0]}" />
+			
+			<h:outputText value="Übertragungs-Codierungen: \#{headerValues['Accept-Encoding'][0]}" />
+			<h:outputText value="Übertragungs-Codierungen: #{headerValues['Accept-Encoding'][0]}" />
+		</h:panelGrid>
+		
+	</ui:define>
+
+</ui:composition>

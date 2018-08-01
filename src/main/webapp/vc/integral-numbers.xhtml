@@ -1,0 +1,35 @@
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="header">Konvertierung ganzer Zahlen</ui:define>
+	
+	<ui:define name="main">	
+	
+		<h:panelGrid columns="2">
+			<f:facet name="header">Konvertierung ganzer Zahlen</f:facet>
+			
+			<h:outputLabel for="byteValue" value="Byte-Wert:" />
+			<h:inputText id="byteValue" value="#{integralNumbers.byteValue}" />
+			
+			<h:outputLabel for="shortValue" value="Short-Wert:" />
+			<h:inputText id="shortValue" value="#{integralNumbers.shortValue}" />
+
+			<h:outputLabel for="intValue" value="Int-Wert:" />
+			<h:inputText id="intValue" value="#{integralNumbers.intValue}" />
+
+			<h:outputLabel for="longValue" value="Long-Wert:" />
+			<h:inputText id="longValue" value="#{integralNumbers.longValue}" />
+
+			<h:outputLabel for="bigIntValue" value="BigInteger-Wert:" />
+			<h:inputText id="bigIntValue" value="#{integralNumbers.bigIntValue}" />
+			
+			<h:commandButton value="Abschicken" action="#{integralNumbers.submit}"/>
+			<h:panelGroup />
+		</h:panelGrid>
+	</ui:define>
+
+</ui:composition>

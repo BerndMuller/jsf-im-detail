@@ -1,0 +1,77 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+  <header>
+  
+  	<ui:insert name="header">Der Header</ui:insert>
+  	
+    <nav class="nav">
+	  <ul>
+	  
+	  	<li><a href="#{request.contextPath}/home.jsf">Home</a></li>
+	  	
+	  	<li class="dropdown">
+  			<a href="#" class="dropbtn">Lebenszyklus</a>
+  			<div class="dropdown-content">
+  				<a href="#{request.contextPath}/lifecycle/lifecycle-observer.jsf">Lifecycle (einfach)</a>
+  				<a href="#{request.contextPath}/lifecycle/lifecycle-observer.jsf">Lifecycle (Ajax)</a>
+  				<a href="#{request.contextPath}/lifecycle/lifecycle-observer-detailed.jsf">Lifecycle (detailliert)</a>
+  			</div>
+  		</li>
+	  
+	  	<li class="dropdown">
+  			<a href="#" class="dropbtn">EL</a>
+  			<div class="dropdown-content">
+  				<a href="#{request.contextPath}/el/value-expressions.jsf">Werteausdrücke</a>
+  				<a href="#{request.contextPath}/el/complex-expressions.jsf">Komplexe Ausdrücke</a>
+  				<a href="#{request.contextPath}/el/method-expressions.jsf">Methodenausdrücke</a>
+  				<a href="#{request.contextPath}/el/implicit-objects.jsf">Vordefinierte Objekte</a>
+  				<a href="#{request.contextPath}/el/collections.jsf">Collections</a>
+  				<a href="#{request.contextPath}/el/lambdas.jsf">Lambdas</a>
+  				<a href="#{request.contextPath}/el/constants.jsf">Konstanten</a>
+  				<a href="#{request.contextPath}/el/el-in-java.jsf">EL in Java</a>
+  				<a href="#{request.contextPath}/el/do-not-do-this.jsf">Bitte nicht so</a>
+  				<a href="#{request.contextPath}/el/labs.jsf">Aufgaben und Lösungen</a>
+  			</div>
+  		</li>
+
+	  	<li class="dropdown">
+  			<a href="#" class="dropbtn">MB</a>
+  			<div class="dropdown-content">
+  				<a href="#{request.contextPath}/mb/managed-beans-overview.jsf">Überblick</a>
+  			</div>
+  		</li>
+
+	  	<li class="dropdown">
+  			<a href="#" class="dropbtn">V und K</a>
+  			<div class="dropdown-content">
+  				<a href="#{request.contextPath}/vc/integral-numbers.jsf">Konvertierung ganzer Zahlen</a>
+  				<a href="#{request.contextPath}/vc/floating-point-numbers.jsf">Konvertierung von Gleitkommazahlen</a>
+  				<a href="#{request.contextPath}/vc/formatting-numbers.jsf">Konvertierung mit <code>&lt;f:convertNumber&gt;</code></a>
+  				<a href="#{request.contextPath}/vc/formatting-date-time.jsf">Konvertierung mit <code>&lt;f:convertDateTime&gt;</code></a>
+  				<a href="#{request.contextPath}/vc/enums.jsf">Konvertierung von Enums</a>
+  				<a href="#{request.contextPath}/vc/credit-card-numbers.jsf">Anwendungsdefinierte Konvertierer</a>
+  				<a href="#{request.contextPath}/vc/validators.jsf">Standardvalidierer</a>
+  				<a href="#{request.contextPath}/vc/custom-validators.jsf">Anwendungsdefinierte Validierer</a>
+  				<a href="#{request.contextPath}/vc/immediate.jsf">Das <code>immediate</code>-Attribut</a>
+  				<a href="#{request.contextPath}/vc/customer.jsf">Bean Validation</a>
+  				<a href="#{request.contextPath}/vc/customer-bean-validation.jsf">Anwendungsdefinierte BV-Constraints und Gruppenvalidierung</a>
+  			</div>
+  		</li>
+
+	  	<li class="dropdown">
+  			<a href="#" class="dropbtn">Konfiguration</a>
+  			<div class="dropdown-content">
+  				<h:commandLink action="#{printOrWebToggle.toggle}" value="Print/Web umschalten (nur für Screen-Shots)" immediate="true" />
+  			</div>
+  		</li>
+
+	  </ul>
+    </nav>
+    
+  </header>
+
+</ui:composition>

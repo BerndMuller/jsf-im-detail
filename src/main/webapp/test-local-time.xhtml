@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head></h:head> 
+<body> 
+	<h:form>
+		<f:metadata>
+			<f:importConstants type="java.lang.Integer"/>
+			<f:importConstants type="java.time.LocalTime"/>
+		</f:metadata>
+		#{Integer.MAX_VALUE}
+		<br />
+		#{LocalTime.MAX}
+		<br />
+		<h:outputText value="#{LocalTime.MAX}">
+			<f:convertDateTime type="localTime" timeStyle="long"/>
+		</h:outputText>
+	</h:form>
+</body> 
+</html>

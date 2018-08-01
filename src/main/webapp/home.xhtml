@@ -1,0 +1,76 @@
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:comp="http://xmlns.jcp.org/jsf/composite/components"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="header">Ausgangsseite für das Kapitel 2 <span style="font-style: italic;font-weight: bold;">JavaServer Faces im Detail</span></ui:define>
+	
+	<ui:define name="css">
+		ul {
+  			list-style-type: none;
+		}
+	</ui:define>
+	
+	<ui:define name="main">
+		
+	  	<ul>
+			<li>2 JavaServer Faces im Detail
+				<ul>
+					<li>2.1 Bearbeitungsmodell einer JSF-Anfrage
+						<ul>
+							<li><a href="#{request.contextPath}/lifecycle/lifecycle-observer.jsf">Lebenszyklus (einfach)</a></li>
+							<li><a href="#{request.contextPath}/lifecycle/lifecycle-observer.jsf">Lebenszyklus (Ajax)</a></li>
+							<li><a href="#{request.contextPath}/lifecycle/lifecycle-observer-detailed.jsf">Lebenszyklus (detailliert)</a></li>
+						</ul>
+					</li>
+				</ul>
+				
+				<ul>
+					<li>2.2 Expression-Language
+						<ul>
+							<li>2.2.1 Syntax</li>
+							<li>2.2.2 <a href="#{request.contextPath}/el/value-expressions.jsf">Werteausdrücke</a></li>
+							<li>2.2.3 <a href="#{request.contextPath}/el/complex-expressions.jsf">Vergleiche, arithmethische und logische Ausdrücke</a></li>
+  							<li>2.2.4 <a href="#{request.contextPath}/el/method-expressions.jsf">Methodenausdrücke</a></li>
+  							<li>2.2.5 <a href="#{request.contextPath}/el/implicit-objects.jsf">Vordefinierte Objektnamen</a></li>
+			  				<li>2.2.6 <a href="#{request.contextPath}/el/collections.jsf">Collections</a></li>
+  							<li>2.2.7 <a href="#{request.contextPath}/el/lambdas.jsf">Lambdas</a></li>
+  							<li>2.2.8 <a href="#{request.contextPath}/el/constants.jsf">Konstanten</a></li>
+  							<li>2.2.9 <a href="#{request.contextPath}/el/el-in-java.jsf">EL in Java</a></li>
+  							<li>2.2.10 <a href="#{request.contextPath}/el/do-not-do-this.jsf">Weniger sinnvolle Verwendungen</a></li>
+  							<li><a href="#{request.contextPath}/el/labs.jsf">Aufgaben und Lösungen</a></li>
+						</ul>
+					</li>
+				</ul>
+				
+				<ul>
+					<li>2.3 Managed Beans
+						<ul>
+							<li><a href="#{request.contextPath}/mb/managed-beans-overview.jsf">Überblick: Verschiedene Scopes</a></li>
+						</ul>
+					</li>
+				</ul>
+
+				<ul>
+					<li>2.4 Validierung und Konvertierung
+						<ul>
+							<li>2.4.1 <a href="#{request.contextPath}/vc/integral-numbers.jsf">Standardkonvertierer (ganze Zahlen)</a></li>
+							<li>2.4.1 <a href="#{request.contextPath}/vc/floating-point-numbers.jsf">Standardkonvertier (Gleitkommazahlen)</a></li>
+							<li>2.4.2 <a href="#{request.contextPath}/vc/formatting-numbers.jsf">Konvertierung mit &lt;f:convertNumber&gt;</a></li>
+							<li>2.4.3 <a href="#{request.contextPath}/vc/formatting-date-time.jsf">Konvertierung mit &lt;f:convertDateTime&gt;</a></li>
+							<li>2.4.4 <a href="#{request.contextPath}/vc/enums.jsf">Konvertierung von Aufzählungstypen</a></li>
+							<li>2.4.5 <a href="#{request.contextPath}/vc/credit-card-numbers.jsf">Anwendungsdefinierte Konvertierer</a></li>
+						</ul>
+					</li>
+				</ul>
+				
+			</li>
+		</ul>
+		
+	</ui:define>
+
+</ui:composition>

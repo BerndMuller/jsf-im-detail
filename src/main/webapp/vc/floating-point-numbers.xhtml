@@ -1,0 +1,38 @@
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="header">Konvertierung von Gleitkommazahlen</ui:define>
+	
+	<ui:define name="main">	
+	
+		<h:panelGrid columns="3">
+			<f:facet name="header">Konvertierung von Gleitkommazahlen</f:facet>
+			
+			<h:outputText value="Typ" style="font-weight: bold;"/>
+			<h:outputText value="Ein-/Ausgabe" style="font-weight: bold;"/>
+			<h:outputText value="Quadrat der Eingabe" style="font-weight: bold;"/>
+			
+			<h:outputLabel for="floatValue" value="Float-Wert:" />
+			<h:inputText id="floatValue" value="#{floats.floatValue}" />
+			<h:outputText value="#{floats.floatValueSquare}" />
+			
+			<h:outputLabel for="doubleValue" value="Double-Wert:" />
+			<h:inputText id="doubleValue" value="#{floats.doubleValue}" />
+			<h:outputText value="#{floats.doubleValueSquare}" />
+			
+			<h:outputLabel for="bigDecimalValue" value="BigDecimal-Wert:" />
+			<h:inputText id="bigDecimalValue" value="#{floats.bigDecimalValue}" />
+			<h:outputText value="#{floats.bigDecimalValueSquare}" />
+			
+			<h:commandButton value="Abschicken" action="#{floats.submit}"/>
+			<h:panelGroup />
+			
+			<h:panelGroup />
+		</h:panelGrid>
+	</ui:define>
+
+</ui:composition>

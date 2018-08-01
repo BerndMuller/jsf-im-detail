@@ -1,0 +1,136 @@
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="header">Konvertierung und Formatierung</ui:define>
+	
+	<ui:define name="main">
+		<f:metadata>
+			<f:importConstants type="java.util.Locale"/>
+		</f:metadata>
+		<h:panelGrid columns="2" style="table-layout: auto;">
+			<f:facet name="colgroups">
+				<h:panelGroup>
+					<colgroup>
+    					<col style="width:60%" />
+    					<col style="width:40%" />
+  					</colgroup>
+				</h:panelGroup>
+			</f:facet>
+			<f:facet name="header">Der DateTime-Converter &lt;f:convertDateTime&gt; </f:facet>
+			
+			<h:outputText value="LocalDate mit &lt;f:convertDateTime type=&quot;localDate&quot;&gt;" />
+			<h:inputText value="#{formattingDateTime.dates[0]}" size="24">
+				<f:convertDateTime type="localDate" />
+			</h:inputText>
+
+			<h:outputText value="LocalDate mit &lt;f:convertDateTime type=&quot;localDate&quot; dateStyle=&quot;short&quot;&gt;" />
+			<h:inputText value="#{formattingDateTime.dates[1]}" size="24">
+				<f:convertDateTime type="localDate" dateStyle="short"/>
+			</h:inputText>
+
+			<h:outputText value="LocalDate mit &lt;f:convertDateTime type=&quot;localDate&quot;dateStyle=&quot;long&quot;&gt;" />
+			<h:inputText value="#{formattingDateTime.dates[2]}" size="24">
+				<f:convertDateTime type="localDate" dateStyle="long"/>
+			</h:inputText>
+
+			<h:outputText value="LocalDate mit &lt;f:convertDateTime type=&quot;localDate&quot;dateStyle=&quot;full&quot;&gt;" />
+			<h:inputText value="#{formattingDateTime.dates[3]}" size="24">
+				<f:convertDateTime type="localDate" dateStyle="full" />
+			</h:inputText>
+
+			
+			<h:outputText value="LocalTime mit &lt;f:convertDateTime type=&quot;localTime&quot;&gt;" />
+			<h:inputText value="#{formattingDateTime.times[0]}" size="24">
+				<f:convertDateTime type="localTime" />
+			</h:inputText>
+
+			
+
+			<!-- java.time.DateTimeException: Unable to extract value: class java.time.format.DateTimePrintContext$1 -->
+			<h:outputText value="LocalTime mit &lt;f:convertDateTime type=&quot;localTime&quot; timeStyle=&quot;short&quot; &gt;" />
+			<h:inputText value="#{formattingDateTime.times[0]}">
+				<f:convertDateTime type="localTime" timeStyle="short"/>
+			</h:inputText>
+<ui:remove>
+			<h:outputText value="LocalTime mit &lt;f:convertDateTime type=&quot;localTime&quot; timeStyle=&quot;long&quot; &gt;" />
+			<h:inputText value="#{formattingDateTime.times[0]}">
+				<f:convertDateTime type="localTime" timeStyle="long"/>
+			</h:inputText>
+
+			<h:outputText value="LocalTime mit &lt;f:convertDateTime type=&quot;localTime&quot; Style=&quot;full&quot; &gt;" />
+			<h:inputText value="#{formattingDateTime.times[0]}">
+				<f:convertDateTime type="localTime" timeStyle="full"/>
+			</h:inputText>
+</ui:remove>
+
+
+			<h:outputText value="LocalDateTime mit &lt;f:convertDateTime type=&quot;localDateTime&quot; &gt;" />
+			<h:inputText value="#{formattingDateTime.dateTimes[0]}" size="24">
+				<f:convertDateTime type="localDateTime" />
+			</h:inputText>
+
+
+			<h:panelGroup>
+				LocalDateTime mit 
+				<br />
+				&lt;f:convertDateTime type=&quot;date&quot; pattern=&quot;dd.MM.yyyy&quot; &gt; 
+			</h:panelGroup>
+			<h:inputText value="#{formattingDateTime.dates[4]}" size="24">
+				<f:convertDateTime type="localDate" pattern="dd.MM.yyyy" />
+			</h:inputText>
+
+			
+			<h:panelGroup>
+				LocalDateTime mit 
+				<br />
+				&lt;f:convertDateTime type=&quot;date&quot; pattern=&quot;dd. MMM yyyy&quot; &gt;	
+			</h:panelGroup>
+			<h:inputText value="#{formattingDateTime.dates[5]}" size="24">
+				<f:convertDateTime type="localDate" pattern="dd. MMM yyyy" />
+			</h:inputText>			
+
+
+			<h:panelGroup>
+				LocalDateTime mit
+				<br />  
+				&lt;f:convertDateTime type=&quot;date&quot; pattern=&quot;'Heute,' EEEE 'der' dd. MMMM yyyy&quot; &gt;
+			</h:panelGroup>
+			
+			
+			
+			<h:inputText value="#{formattingDateTime.dates[6]}" size="24">
+				<f:convertDateTime type="localDate" pattern="'Heute,' EEEE 'der' dd. MMMM yyyy" />
+			</h:inputText>
+						
+<ui:remove>
+			<h:outputText value="LocalDateTime mit &lt;f:convertDateTime type=&quot;date&quot; pattern=&quot;dd.MM.yyyy G, HH:mm:ss:SSS&quot; &gt;" />
+			<h:inputText value="#{formattingDateTime.dates[7]}">
+				<!-- UnsupportedTemporalTypeException: Unsupported field: HourOfDay -->
+				<f:convertDateTime type="localDate" pattern="dd.MM.yyyy G, HH:mm:ss:SSS" />
+			</h:inputText>			
+</ui:remove>
+
+
+			<h:outputText value="java.util.Date &lt;f:convertDateTime&gt;" />
+			<h:inputText value="#{formattingDateTime.date}" size="24">
+				<f:convertDateTime />
+			</h:inputText>
+			
+			<h:panelGroup>
+				Eingabe in #{localeController.locale.displayName}
+				<h:selectOneMenu value="#{formattingDateTime.locale}">
+					<f:selectItem itemLabel="Antwort in Deutsch" itemValue="#{Locale.GERMAN}" />
+					<f:selectItem itemLabel="Antwort in Englisch" itemValue="#{Locale.ENGLISH}" />
+				</h:selectOneMenu>
+				<h:commandButton value="Abschicken" action="#{formattingDateTime.submit}"/>
+			</h:panelGroup>
+			
+			<h:panelGroup />
+		</h:panelGrid>
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,74 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="header">Expression-Language: Lambda-Ausdrücke</ui:define>
+
+	<ui:define name="main">
+		<f:metadata>
+			<f:importConstants type="java.lang.Long"/>
+		</f:metadata>
+		<h:panelGrid columns="2">
+			<f:facet name="header">Beispiele mit Streams, Lambdas und statischen Collections</f:facet>
+			
+			<h:panelGroup>
+				&lt;ui:repeat var="elem" value="\#{elController.array}"&gt;
+					<br />
+					&#160;&#160; \#{elem}
+					<br /> 
+				&lt;/ui:repeat&gt;
+			</h:panelGroup>
+			<h:panelGroup>
+				<ui:repeat var="elem" value="#{elController.array}">
+					#{elem}
+				</ui:repeat>
+			</h:panelGroup>
+			
+
+			<h:panelGroup>
+				&lt;ui:repeat var="elem" value="\#{elController.array.stream().sorted().toList()}"&gt;
+					<br />
+					&#160;&#160; \#{elem}
+					<br /> 
+				&lt;/ui:repeat&gt;
+			</h:panelGroup>
+			<h:panelGroup>
+				<ui:repeat var="elem" value="#{elController.array.stream().sorted().toList()}">
+					#{elem} 
+				</ui:repeat>
+			</h:panelGroup>
+
+			<h:outputText value="Verdoppelt: \#{elController.array.stream().map(e -> e.concat(e)).toList()}" />
+			<h:outputText value="Verdoppelt: #{elController.array.stream().map(e -> e.concat(e)).toList()}" />
+			
+			<h:outputText value="Quadrate: \#{elController.list.stream().map(x-> x * x).toList()}" />
+			<h:outputText value="Quadrate: #{elController.list.stream().map(x-> x * x).toList()}" />
+			
+			<h:outputText value="Durchschnitt: \#{elController.list.stream().average().get()}" />
+			<h:outputText value="Durchschnitt: #{elController.list.stream().average().get()}" />
+			
+			<h:outputText value="\#{(x -> x + 1)(10)}" />
+			<h:outputText value="#{(x -> x + 1)(10)}" />
+			
+			<h:outputText value="\#{(x -> x + 1)(elController.year)}" />
+			<h:outputText value="#{(x -> x + 1)(elController.year)}" />
+
+			<h:outputText value="\#{['eins', 'zwei', 'drei'].get(0)}" />
+			<h:outputText value="#{['eins', 'zwei', 'drei'].get(0)}" />
+			
+			<h:outputText value="\#{['2016', '2018', '2020'].contains(elController.year)}" />
+			<h:outputText value="#{['2016', '2018', '2020'].contains(elController.year)}" />
+
+			<h:outputText value="\#{[2016, 2018, 2020].contains(elController.year)}" />
+			<h:outputText value="#{[2016, 2018, 2020].contains(elController.year)}" />
+<!-- 
+			<h:outputText value="\#{[2016, 2018, 2020].contains(Long(elController.year))}" />
+			<h:outputText value="#{[2016, 2018, 2020].contains(Long(elController.year))}" />
+ -->			
+		</h:panelGrid>
+	</ui:define>
+
+</ui:composition>

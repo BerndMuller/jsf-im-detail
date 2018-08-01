@@ -1,0 +1,55 @@
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="header">Validierung</ui:define>
+	
+	<ui:define name="main">	
+	
+		<h:panelGrid columns="3" style="table-layout: auto;">
+			<f:facet name="header">Anwendungsdefinierte Validierer</f:facet>
+	
+			Validierermethode:
+			<h:panelGroup>
+				<h:inputText id="email1" label="Validierermethode" value="#{vc.email}" required="true" 
+					validator="#{vc.validateEmail}" validatorMessage="Falsche E-Mail-Syntax">
+				</h:inputText>
+				<h:message id="email1-message" for="email1" />
+			</h:panelGroup>
+			<h:commandButton value="Abschicken">
+				<f:ajax execute="email1" listener="#{vc.listener}" render="email1-message" />
+			</h:commandButton>
+
+			Validiererklasse mit validator-Attribut:
+			<h:panelGroup>
+				<h:inputText id="email2" label="Validiererklasse" value="#{vc.email}" required="true"
+					validator="emailValidator" validatorMessage="Falsche E-Mail-Syntax">
+				</h:inputText>
+				<h:message id="email2-message" for="email2" />
+			</h:panelGroup>
+			<h:commandButton value="Abschicken">
+				<f:ajax execute="email2" listener="#{vc.listener}" render="email2-message" />
+			</h:commandButton>
+
+			Validiererklasse mit &lt;f:validator&gt;-Tag:
+			<h:panelGroup>
+				<h:inputText id="email3" label="Validiererklasse" value="#{vc.email}" required="true">
+					<f:validator validatorId="emailValidator" />
+				</h:inputText>
+				<h:message id="email3-message" for="email3" />
+			</h:panelGroup>
+			<h:commandButton value="Abschicken">
+				<f:ajax execute="email3" listener="#{vc.listener}" render="email3-message" />
+			</h:commandButton>
+			
+		</h:panelGrid>
+
+		<h:messages showDetail="true"  showSummary="true" />
+		
+		
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,34 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="header">Expression-Language: Konstanten</ui:define>
+
+	<ui:define name="main">
+		<f:metadata>
+			<f:importConstants type="java.lang.Integer"/>
+			<f:importConstants type="java.lang.Boolean"/>
+			<f:importConstants type="java.lang.Math"/>
+		</f:metadata>
+		<h:panelGrid columns="2">
+			<f:facet name="header">Konstanten</f:facet>
+			
+			<h:outputText value="\#{Integer.MAX_VALUE}" />
+			<h:outputText value="#{Integer.MAX_VALUE}" />
+			
+			<h:outputText value="\#{Boolean.TRUE}" />
+			<h:outputText value="#{Boolean.TRUE}" />
+
+			<h:outputText value="\#{Math.PI}" />
+			<h:outputText value="#{Math.PI}" />
+
+			<h:outputText value="\#{Math.PI * Math.E}" />
+			<h:outputText value="#{Math.PI * Math.E}" />
+			
+		</h:panelGrid>
+	</ui:define>
+
+</ui:composition>

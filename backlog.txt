@@ -1,0 +1,15 @@
+Noch einbauen:
+#{view.viewId}
+#{param}
+#{facesContext.externalContext.requestParameterMap}
+#{request.requestURI}
+
+http://jdevelopment.nl/internationalization-jsf-utf8-encoded-properties-files/
+
+in Lokalisierung: Default ist java.util.Locale.getDefault()
+
+f:verbatim deprecatet mit JSF 2.0, braucht man mit facelets nicht
+
+Selenium-IT mit Firefox geht nicht mehr (July 18), mit Chrome gehts
+
+

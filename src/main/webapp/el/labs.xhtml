@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="header">Aufgaben und Lösungen</ui:define>
+	
+	<ui:define name="main">
+	
+		<h:panelGrid columns="2">
+			<f:facet name="header">Filtern gerader Zahlen</f:facet>
+			<h:outputText value="\#{elController.list.stream().filter(n -> n % 2 == 0).toList()}" />
+			<h:outputText value="#{elController.list.stream().filter(n -> n % 2 == 0).toList()}" />
+		</h:panelGrid>
+		
+		<br />
+
+		<h:panelGrid columns="2">
+			<f:facet name="header">Ausgabe der Request-Header</f:facet>
+			
+			<h:panelGroup>
+				&lt;h:dataTable var="entry" value="\#{header}"&gt;
+					<br />
+					&#160;&#160; &lt;h:column>\#{entry.key}&lt;/h:column&gt;
+					<br />
+    				&#160;&#160; &lt;h:column>\#{entry.value}&lt;/h:column&gt;
+    				<br />
+				&lt;/h:dataTable&gt;
+			</h:panelGroup>
+
+			<h:dataTable var="entry" value="#{header}">
+				<h:column>#{entry.key}</h:column>
+    			<h:column>#{entry.value}</h:column>
+			</h:dataTable>
+
+		</h:panelGrid>
+		
+		<br />
+		
+	</ui:define>
+
+</ui:composition>

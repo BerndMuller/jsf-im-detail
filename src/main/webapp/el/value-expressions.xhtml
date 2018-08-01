@@ -1,0 +1,42 @@
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="header">Expression-Language: Einfache Werteausdrücke</ui:define>
+	
+	<ui:define name="main">	
+	
+		<h:panelGrid columns="2">
+			<f:facet name="header">Einfache Werteausdrücke</f:facet>
+			
+			<h:outputText id="name1" value="\#{elController.name}" />
+			<h:outputText id="name2" value="#{elController.name}" />
+			
+			<h:outputText value="\#{elController['name']}" />
+			<h:outputText value="#{elController['name']}" />
+			
+			<h:outputText value="Dies sind einfache \#{elController.name} im Jahr \#{elController.year}" />
+			<h:outputText value="Dies sind einfache #{elController.name} im Jahr #{elController.year}" />
+			
+			<h:outputText value="\#{elController.array[0]}" />
+			<h:outputText value="#{elController.array[0]}" />
+			
+			<h:outputText value="\#{elController.list[4]}" />
+			<h:outputText value="#{elController.list[4]}" />
+			
+			<h:outputText value="\#{elController.list.get(5)}" />
+			<h:outputText value="#{elController.list.get(5)}" />
+			
+			<h:outputText value="\#{elController.map['zwei']}" />
+			<h:outputText value="#{elController.map['zwei']}" />
+			
+			<h:outputText value="\#{elController.map[elController.array[2]]}" />
+			<h:outputText value="#{elController.map[elController.array[2]]}" />
+			
+		</h:panelGrid>
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,66 @@
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="header">Expression-Language: Arithmetik, Vergleiche und logische Ausdrücke</ui:define>
+	
+	<ui:define name="main">
+		
+		<h:panelGrid columns="2">
+			<f:facet name="header">Einfache arithmetische Ausdrücke</f:facet>
+			
+			<h:outputText value="\#{17 + 4}" /> 
+			<h:outputText value="#{17 + 4}" />
+
+			<h:outputText value="Das übernächste Jahr ist \#{elController.year + 2}" /> 
+			<h:outputText value="Das übernächste Jahr ist #{elController.year + 2}" />
+			
+			<h:outputText value="\#{elController.year} ist \#{((elController.year % 4) == 0 ? 'ein' : 'kein')} Schaltjahr" />
+			<h:outputText value="#{elController.year} ist #{((elController.year % 4) == 0 ? 'ein' : 'kein')} Schaltjahr" />
+		</h:panelGrid>
+
+		<br />
+		
+		<h:panelGrid columns="2">
+			<f:facet name="header">Vergleiche und logische Ausdrücke</f:facet>
+			
+			<h:outputFormat value="\#{true or false}" />
+			<h:outputFormat value="#{true or false}" />
+
+			<h:outputText value="\#{'eins' == elController.array[0]}" />
+			<h:outputText value="#{'eins' == elController.array[0]}" />
+			
+			<h:outputText value="\#{2017 == elController.year}" />
+			<h:outputText value="#{2017 == elController.year}" />
+			
+			<h:outputText value="\#{'2017' == elController.year}" />
+			<h:outputText value="#{'2017' == elController.year}" />
+			
+			<h:outputText value="\#{2018 == elController.year}" />
+			<h:outputText value="#{2018 == elController.year}" />
+			
+			<h:outputText value="\#{elController.year > 2000}" />
+			<h:outputText value="#{elController.year > 2000}" />
+			
+			<h:outputText value="\#{elController.year > 2000 and (elController.year %4 != 0)}" />
+			<h:outputText value="#{elController.year > 2000 and (elController.year %4 != 0)}" />
+			
+			
+			<!-- Fuehrt zu Fehler: Auf "&" in der Entityreferenz muss umgehend der Entityname folgen.
+			<h:outputText value="#{elController.year > 2000 && (elController.year %4 != 0)}" />
+			-->
+			
+			<h:outputText value="\#{elController.year > 2000 &amp;&amp; (elController.year %4 != 0)}" />
+			<h:outputText value="#{elController.year > 2000 &amp;&amp; (elController.year %4 != 0)}" />
+
+			<h:outputText value="\#{elController.year > 2000 &#x0026;&#x0026; (elController.year %4 != 0)}" />
+			<h:outputText value="#{elController.year > 2000  &#x0026;&#x0026; (elController.year %4 != 0)}" />
+			 			
+		</h:panelGrid>
+
+	</ui:define>
+
+</ui:composition>

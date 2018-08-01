@@ -1,0 +1,43 @@
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="header">Überblick Managed Beans</ui:define>
+	
+	<ui:define name="main">	
+	
+		<h:panelGrid columns="2">
+			<f:facet name="header">Verschiedene Scopes</f:facet>
+			
+			<h:outputText value="Request Scoped" />
+			<h:outputText id="rsc" value="#{requestScopedController.hashCode()}" />
+
+			<h:panelGroup>
+				<h:outputText value="View Scoped" />
+				<h:commandButton action="#{viewScopedController.reload}" value="Reload" />
+				<!--  
+				<h:commandButton action="managed-beans-overview.jsf" value="Reload ohne MB" />
+				-->
+			</h:panelGroup>			
+			
+			<h:outputText id="vsc" value="#{viewScopedController.hashCode()}" />
+
+			<h:outputText value="Session Scoped" />
+			<h:outputText id="ssc" value="#{sessionScopedController.hashCode()}" />
+
+			<h:outputText value="Application Scoped" />
+			<h:outputText id="asc" value="#{applicationScopedController.hashCode()}" />
+			
+		</h:panelGrid>
+		
+		<br /><br />
+		Property 'requestScopedController.messageFromPropertyProvider': #{requestScopedController.messageFromPropertyProvider}
+		<br />
+		Property 'requestScopedController.messageFromPropertyProviderWithoutManagedProperty': #{requestScopedController.messageFromPropertyProviderWithoutManagedProperty}
+		
+	</ui:define>
+
+</ui:composition>

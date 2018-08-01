@@ -1,0 +1,65 @@
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="header">Aufzählungstypen</ui:define>
+	
+	<ui:define name="main">	
+		<f:metadata>
+			<f:importConstants type="de.jsfpraxis.detail.vc.Familienstand"/>
+		</f:metadata>
+		
+		<h:panelGrid id="enum1" columns="3">
+			<f:facet name="header">Aufzählungstypen mit &lt;f:selectItem&gt;</f:facet>
+			Familienstand:
+			<h:selectOneMenu id="fs1" value="#{enums.familienstand1}">
+				<f:selectItem itemLabel="ledig" itemValue="LEDIG" />
+				<f:selectItem itemLabel="verheiratet" itemValue="VERHEIRATET" />
+				<f:selectItem itemLabel="geschieden" itemValue="GESCHIEDEN" />
+				<f:selectItem itemLabel="verwitwet" itemValue="VERWITWET" />
+			</h:selectOneMenu>
+			<h:commandButton value="Abschicken">
+				<f:ajax execute="fs1" render="selected" listener="#{enums.ajaxBehaviorListener}" />
+			</h:commandButton>
+		</h:panelGrid>
+		
+		<br/>
+		<br/>
+		
+		<h:panelGrid id="enum2" columns="3">
+			<f:facet name="header">Aufzählungstypen mit &lt;f:selectItems&gt; und Klasse SelectItem</f:facet>
+			Familienstand:
+			<h:selectOneMenu id="fs2" value="#{enums.familienstand2}">
+				<f:selectItems value="#{enums.values}"/>
+			</h:selectOneMenu>
+			<h:commandButton value="Abschicken">
+				<f:ajax execute="fs2" render="selected" listener="#{enums.ajaxBehaviorListener}" />
+			</h:commandButton>
+		</h:panelGrid>
+		
+		<br/>
+		<br/>
+		
+		<h:panelGrid id="enum3" columns="3">
+			<f:facet name="header">Aufzählungstypen mit &lt;f:selectItems&gt; und Enum </f:facet>
+			Familienstand:
+			<h:selectOneMenu id="fs3" value="#{enums.familienstand3}">
+				<f:selectItems value="#{Familienstand.values()}"/>
+			</h:selectOneMenu>
+			<h:commandButton value="Abschicken">
+				<f:ajax execute="fs3" render="selected" listener="#{enums.ajaxBehaviorListener}" />
+			</h:commandButton>
+		</h:panelGrid>
+		<br/>
+		<br/>
+		<h:panelGrid id="selected" columns="1">
+			<f:facet name="header">Auswahlergebnis</f:facet>
+			Gewählt wurde: #{enums.familienstandSelected}
+		</h:panelGrid>
+		
+	</ui:define>
+
+</ui:composition>

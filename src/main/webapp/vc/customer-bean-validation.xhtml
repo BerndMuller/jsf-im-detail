@@ -1,0 +1,44 @@
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="header">Validierung</ui:define>
+	
+	<ui:define name="main">	
+	
+		<h:panelGrid columns="2" style="table-layout: auto;">
+			<f:facet name="header">Anwendungsdefinierte BV-Constraints und Gruppenvalidierung</f:facet>
+	
+			Name:	
+			<h:panelGroup>
+				<h:inputText id="name" label="name" value="#{customerBVController.customer.name}" />
+				<h:message id="name-message" for="name" />
+			</h:panelGroup>
+
+			Geburtstag:
+			<h:panelGroup>
+				<h:inputText id="dob" label="dob" value="#{customerBVController.customer.dob}">
+					<f:convertDateTime type="localDate" />
+					<f:validateBean validationGroups="#{customerBVController.validationGroup}" />
+				</h:inputText>
+				<h:message id="dob-message" for="dob" />
+			</h:panelGroup>
+
+			Kreditlimit:
+			<h:panelGroup>
+				<h:inputText id="creditline" label="creditline" value="#{customerBVController.customer.creditLine}">
+					<f:validateBean validationGroups="#{customerBVController.validationGroup}" />
+					</h:inputText>
+				<h:message id="creditline-message" for="creditline" />
+			</h:panelGroup>
+
+			<h:commandButton id="save" action="#{customerBVController.save}" value="Speichern" />
+		</h:panelGrid>
+		
+
+	</ui:define>
+
+</ui:composition>

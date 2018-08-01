@@ -1,0 +1,43 @@
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="header">Validierung</ui:define>
+	
+	<ui:define name="main">	
+	
+		<h:panelGrid columns="2" style="table-layout: auto;">
+			<f:facet name="header">Eingabekomponenten mit immediate-Attribut</f:facet>
+			<h:outputLabel value="#{ic.addressLabels[ic.language]}" for="address" />
+			<h:inputText id="address" value="#{ic.address}" required="true" />
+			<h:outputLabel value="#{ic.languageLabels[ic.language]}" for="language" />
+			<h:selectOneMenu id="language" value="#{ic.language}" onchange="submit();" 
+					immediate="true" valueChangeListener="#{ic.languageChanged}">
+				<f:selectItems value="#{ic.languages}" />
+			</h:selectOneMenu>
+			<h:commandButton action="#{ic.save}" value="ok"/>
+		</h:panelGrid>
+
+		<br/><br/>
+
+		<h:panelGrid columns="2" style="table-layout: auto;">
+			<f:facet name="header">Alternative mit Ajax</f:facet>
+			<h:outputLabel id="addressLabel" value="#{ic.addressLabels[ic.language]}" for="address2" />
+			<h:inputText id="address2" value="#{ic.address}" required="true" />
+			<h:outputLabel id="languageLabel" value="#{ic.languageLabels[ic.language]}" for="language2" />
+			<h:selectOneMenu id="language2" value="#{ic.language}" valueChangeListener="#{ic.languageChanged}">
+				<f:selectItems value="#{ic.languages}" />
+				<f:ajax execute="@this" render="addressLabel languageLabel" /> <!-- @this ist Default-Wert fuer execute, kann also entfallen -->
+			</h:selectOneMenu>
+			<h:commandButton action="#{ic.save}" value="ok" />
+		</h:panelGrid>
+
+
+		<h:messages />
+		
+	</ui:define>
+
+</ui:composition>

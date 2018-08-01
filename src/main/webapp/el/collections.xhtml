@@ -1,0 +1,95 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="header">Expression-Language: Statische Collections</ui:define>
+	
+	<ui:define name="main">
+		<h:panelGrid columns="2">
+			<f:facet name="header">Statische Maps</f:facet>
+			
+			<h:panelGroup>
+				&lt;h:dataTable var="entry" value="\#{{'one':'1','two':'2','three':'3'}}"&gt;
+					<br />
+					&#160;&#160; &lt;h:column&gt;\#{entry.key}&lt;/h:column&gt;
+					<br />
+    				&#160;&#160; &lt;h:column&gt;\#{entry.value}&lt;/h:column&gt;
+    				<br />
+				&lt;/h:dataTable&gt;
+			</h:panelGroup>
+			
+			<h:dataTable var="entry" value="#{{'one':'1','two':'2','three':'3'}}">
+				<h:column>#{entry.key}</h:column>
+    			<h:column>#{entry.value}</h:column>
+			</h:dataTable>
+
+			
+			<h:panelGroup>
+				&lt;h:dataTable var="entry" value="\#{elController.map}"&gt;
+					<br />
+					&#160;&#160; &lt;h:column>\#{entry.key}&lt;/h:column&gt;
+					<br />
+    				&#160;&#160; &lt;h:column>\#{entry.value}&lt;/h:column&gt;
+    				<br />
+				&lt;/h:dataTable&gt;
+			</h:panelGroup>
+
+			<h:dataTable var="entry" value="#{elController.map}">
+				<h:column>#{entry.key}</h:column>
+    			<h:column>#{entry.value}</h:column>
+			</h:dataTable>
+			
+		</h:panelGrid>
+		
+		<br />
+		
+		<h:panelGrid columns="2">
+			<f:facet name="header">Statische Listen</f:facet>
+			
+			<h:panelGroup>
+				&lt;table&gt;
+					<br />
+					&#160;&#160; &lt;ui:repeat value="\#{[1,2,3,4,5,6,7,8,9,10]}" var="n"&gt;
+						<br />
+						&#160;&#160;&#160;&#160; &lt;tr&gt;
+							<br />
+							&#160;&#160;&#160;&#160;&#160;&#160; &lt;ui:repeat value="\#{[1,2,3,4,5,6,7,8,9,10]}" var="m"&gt;
+								<br />	
+								&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;td&gt;
+								  	<br />
+									&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; \#{n * m}
+									<br />
+								&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/td&gt;
+								<br />
+							&#160;&#160;&#160;&#160;&#160;&#160; &lt;/ui:repeat&gt;
+							<br />
+						&#160;&#160;&#160;&#160; &lt;/tr&gt;
+						<br />
+					&#160;&#160; &lt;/ui:repeat&gt;
+					<br />
+				&lt;/table&gt;
+			</h:panelGroup>
+			
+			
+			<table>
+				<ui:repeat value="#{[1,2,3,4,5,6,7,8,9,10]}" var="n">
+					<tr>
+						<ui:repeat value="#{[1,2,3,4,5,6,7,8,9,10]}" var="m">	
+							<td>
+								#{n * m}
+							</td>
+						</ui:repeat>
+					</tr>
+				</ui:repeat>
+			</table>
+			
+		</h:panelGrid>
+		
+		<br />
+		
+	</ui:define>
+
+</ui:composition>
