@@ -1,0 +1,40 @@
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="header">JSFs Standardnachrichten</ui:define>
+	
+	<ui:define name="css">
+		.info {
+			font-style : italic;
+		    color: blue;
+		    display: block;
+		}
+		.error {
+			color: red; 
+			display: block;
+		}
+	</ui:define>
+	<ui:define name="main">	
+		
+		<h:panelGrid columns="2">
+			<f:facet name="header">Eigene Nachrichten (Validierung)</f:facet>
+
+			<h:outputLabel for="input" value="Geben Sie einen Text (5-10 Zeichen) ein:" />
+			<h:panelGroup>
+				<h:inputText id="input" value="#{customMessageController.text}" required="true" validator="#{customMessageController.validateText}">
+					<f:validateLength minimum="5" maximum="10" />
+				</h:inputText>
+				<h:message for="input" infoClass="info" errorClass="error" />
+			</h:panelGroup>
+			<h:commandButton action="custom-messages-1" value="Abschicken" />			
+			<h:panelGroup />
+			
+		</h:panelGrid>
+
+	</ui:define>
+
+</ui:composition>

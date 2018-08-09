@@ -12,9 +12,12 @@
 			<supported-locale>de</supported-locale>
 			<supported-locale>en</supported-locale>
 		</locale-config>
+		<!-- fuer die Default-Messages: -->
+		<message-bundle>javax.faces.Messages</message-bundle>
+		<message-bundle>de.jsfpraxis.detail.vc.MyMessages</message-bundle>
 	</application>
 
-	 
+	
 	 
 	<!--
 	<lifecycle>

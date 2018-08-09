@@ -1,0 +1,35 @@
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="header">JSFs Standardnachrichten</ui:define>
+	
+	<ui:define name="main">	
+		
+		<h:panelGrid>
+			<f:facet name="header">Eigene Nachrichten (allgemein)</f:facet>
+
+			<h:outputLabel id="label" for="button" value="Bitte klicken:" />
+
+			<h:commandButton id="button" action="#{messageController.addMessage()}" value="Klick mich!" />			
+
+			<h:message for="label" rendered="#{not empty facesContext.getMessageList('form:label')}" />
+
+			<!-- zeigt Summary UND Detail 
+			<h:message for="label" showSummary="true" rendered="#{not empty facesContext.getMessageList('form:label')}" />
+			 --> 
+			 
+			<!-- 
+			<h:message for="label" showSummary="true" showDetail="false"
+				rendered="#{not empty facesContext.getMessageList('form:label')}" />
+			 -->
+			
+			
+		</h:panelGrid>
+
+	</ui:define>
+
+</ui:composition>

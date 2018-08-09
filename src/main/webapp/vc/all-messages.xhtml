@@ -1,0 +1,28 @@
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="header">JSFs Standardnachrichten</ui:define>
+	
+	<ui:define name="main">	
+		
+		<h:panelGrid>
+			<f:facet name="header">JSFs Standardnachrichten</f:facet>
+		</h:panelGrid>
+		
+		<ui:repeat var="locale" value="#{messageController.supportedLocales()}">
+			<details>
+				<summary>Messages für #{locale}</summary>
+				<h:dataTable value="#{messageController.bundleForLocaleAsMap(locale)}" var="entry">
+					<h:column>#{entry.key}</h:column>
+					<h:column>#{entry.value}</h:column>
+				</h:dataTable>
+			</details>
+		</ui:repeat>
+
+	</ui:define>
+
+</ui:composition>
