@@ -69,6 +69,14 @@
   		</li>
 
 	  	<li class="dropdown">
+  			<a href="#" class="dropbtn">Events</a>
+  			<div class="dropdown-content">
+  				<a href="#{request.contextPath}/events/action-listener.jsf">Action-Listener</a>
+  				<a href="#{request.contextPath}/events/multiple-action-listener.jsf">Action-Listener mit <code>&lt;f:actionListener&gt;</code></a>
+  			</div>
+  		</li>
+
+	  	<li class="dropdown">
   			<a href="#" class="dropbtn">Konfiguration</a>
   			<div class="dropdown-content">
   				<h:commandLink action="#{printOrWebToggle.toggle}" value="Print/Web umschalten (nur für Screen-Shots)" immediate="true" />

@@ -14,7 +14,10 @@
 		</locale-config>
 		<!-- fuer die Default-Messages: -->
 		<message-bundle>javax.faces.Messages</message-bundle>
+		<!-- fuer eigene/ueberschriebene Messages -->
+		<!-- 
 		<message-bundle>de.jsfpraxis.detail.vc.MyMessages</message-bundle>
+		 -->
 	</application>
 
 	

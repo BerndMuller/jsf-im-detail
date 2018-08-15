@@ -23,7 +23,11 @@ public class MessageController {
 
 	@Inject
 	FacesContext context;
+	
+	public MessageController() {
+	}
 
+	
 	public Map<String, String> bundleForLocaleAsMap(Locale locale) {
 		ResourceBundle bundle = ResourceBundle.getBundle(context.getApplication().getMessageBundle(), locale);
 		Enumeration<String> keys = ResourceBundle.getBundle(context.getApplication().getMessageBundle(), locale).getKeys();

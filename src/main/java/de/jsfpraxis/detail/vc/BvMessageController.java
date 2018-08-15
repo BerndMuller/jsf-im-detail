@@ -48,10 +48,10 @@ public class BvMessageController {
 	@Inject
 	FacesContext context;
 
+	
+	public BvMessageController() {
+	}
 
-	// TODO im Buch
-	//javax.validation.constraints.Size.message=size must be between {min} and {max}
-		
 
 	public Map<String, String> bundleForLocaleAsMap(Locale locale) {
 		ResourceBundle bvBundle = ResourceBundle.getBundle("org.hibernate.validator.ValidationMessages", locale);
@@ -66,8 +66,6 @@ public class BvMessageController {
 		return map;
 	}
 	
-	
-	// TODO überarbeiten für Hibernate validator
 	
 	/**
 	 * Liste der von Hibernate-Validator unterstützten Locales.
