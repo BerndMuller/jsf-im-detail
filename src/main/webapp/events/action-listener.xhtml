@@ -1,0 +1,49 @@
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="header">Events</ui:define>
+	
+	<ui:define name="main">
+
+		<h:panelGrid columns="2">
+			<f:facet name="header">Action-Listener</f:facet>
+			
+			<h:outputLabel value="Eingabe: " for="input" />
+			<h:inputText id="input" value="#{actionController.text}" />
+
+			<h:outputText value="&lt;h:commandButton actionListener=&quot;...&quot; /&gt;" />
+			<h:commandButton actionListener="#{actionController.myActionListener}" value="Action-Listener aufrufen" />
+
+			<h:outputText value="&lt;h:commandButton action=&quot;...&quot; /&gt;" />
+			<h:commandButton action="#{actionController.myActionMethod}" value="Action-Methode aufrufen" />
+
+			<h:outputText value="&lt;h:commandButton action=&quot;...&quot; actionListener=&quot;...&quot; /&gt;" />
+			<h:commandButton action="#{actionController.myActionMethod}" actionListener="#{actionController.myActionListener}" value="Action-Listener und Action-Methode aufrufen" />
+			
+			<h:outputText value="&lt;h:commandButton action=&quot;...WithParam(42)...&quot; /&gt;" />
+			<h:commandButton action="#{actionController.actionMethodWithParam(42)}" value="Action-Methode mit Parameter aufrufen"  />
+
+ 			<h:outputLabel value="Meldung " for="message" />
+ 			<h:outputText id="message" value="#{actionController.message}" />
+		</h:panelGrid>
+
+		<br/><br/>
+		
+		<h:dataTable var="para" value="#{actionController.params}">
+			<f:facet name="header">Action-Methoden mit Parametern</f:facet>
+			<h:column>
+				<h:outputText value="&lt;h:commandButton action=&quot;...(#{para})...&quot; /&gt;" />
+			</h:column>
+			<h:column>
+				<h:commandButton value="Parameter: #{para}" action="#{actionController.actionMethodWithParam(para)}" />
+			</h:column>
+		</h:dataTable>
+				 
+		
+	</ui:define>
+
+</ui:composition>
