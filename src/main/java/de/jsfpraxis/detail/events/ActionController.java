@@ -6,6 +6,13 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 
+/**
+ * Managed Bean zur Demonstration von Action-Methoden und Action-Listener-Methoden.
+ * 
+ * 
+ * @author Bernd Müller
+ *
+ */
 @Named
 @RequestScoped
 public class ActionController {

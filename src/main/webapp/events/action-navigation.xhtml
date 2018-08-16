@@ -1,0 +1,63 @@
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="header">Events</ui:define>
+	
+	<ui:define name="main">
+
+		<h:panelGrid columns="2">
+			<f:facet name="header">Navigation mit Action-Methoden</f:facet>
+			
+			<h:outputText value="&lt;h:commandButton action=&quot;navigation-target&quot; /&gt;" />
+			<h:commandButton action="navigation-target" value="OK" />
+
+			<h:outputText value="&lt;h:commandButton action=&quot;navigation-target.jsf&quot; /&gt;" />
+			<h:commandButton action="navigation-target.jsf" value="OK" />
+
+			<h:outputText value="&lt;h:commandButton action=&quot;navigation-target.xhtml&quot; /&gt;" />
+			<h:commandButton action="navigation-target.xhtml" value="OK" />
+
+			<h:outputText value="&lt;h:commandButton action=&quot;/events/navigation-target.xhtml&quot; /&gt;" />
+			<h:commandButton action="/events/navigation-target.xhtml" value="OK" />
+
+			<h:outputText value="&lt;h:commandButton action=&quot;toTarget()&quot; /&gt;" />
+			<h:commandButton action="#{navigationController.toTarget()}" value="OK" />
+
+			<h:panelGroup>
+				<h:outputText value="&lt;h:commandButton action=&quot;toTarget()&quot; &gt;" />
+				<br />
+				&#160;&#160; <h:outputText value="&lt;/f:ajax &gt;" />
+				<br />
+				<h:outputText value="&lt;/h:commandButton &gt;" />
+			</h:panelGroup>
+			<h:commandButton action="#{nc.toTarget()}" value="OK">
+				<f:ajax execute="@form" render="@form" />
+			</h:commandButton>
+
+			<h:outputText value="&lt;h:commandButton action=&quot;toTargetWithRedirect()&quot; /&gt;" />
+			<h:commandButton action="#{nc.toTargetWithRedirect()}" value="OK" />
+
+			<h:outputText value="&lt;h:commandLink action=&quot;toTargetWithRedirect()&quot; /&gt;" />
+			<h:commandLink action="#{nc.toTargetWithRedirect()}" value="OK" />
+
+			<h:outputText value="&lt;h:commandButton action=&quot;stay()&quot; /&gt;" />
+			<h:commandButton action="#{nc.stay()}" value="OK" />
+
+			<h:outputText value="&lt;h:commandButton action=&quot;stayToo()&quot; /&gt;" />
+			<h:commandButton action="#{nc.stayToo()}" value="OK" />
+			
+			<h:outputText value="&lt;h:outputLink value=&quot;URL&quot; /&gt;" />
+			<h:outputLink value="https://www.jsfpraxis.de" >Das Buch im Netz</h:outputLink>
+			
+			<h:outputText value="&lt;h:commandButton action=&quot;dasBuchImNetz()&quot; /&gt;" />
+			<h:commandButton action="#{nc.dasBuchImNetz()}" value="OK" />
+
+		</h:panelGrid>
+		
+	</ui:define>
+
+</ui:composition>
