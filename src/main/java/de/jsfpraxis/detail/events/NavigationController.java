@@ -30,7 +30,7 @@ public class NavigationController {
 		logger.info("'stay()' aufgerufen");
 	}
 	
-	public Object stayToo() {
+	public String stayToo() {
 		logger.info("'stayToo()' aufgerufen");
 		return null;
 	}
@@ -46,6 +46,7 @@ public class NavigationController {
 	}
 
 	public void dasBuchImNetz() throws IOException {
+		logger.info("ExternalContext: " + externalContext.getContext());
 		externalContext.redirect("https://www.jsfpraxis.de");
 	}
 }

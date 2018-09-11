@@ -20,7 +20,34 @@
 		 -->
 	</application>
 
-	
+	<navigation-rule>
+		<description>Navigation in Verzeichnis</description>
+		<from-view-id>/events/explicit-navigation.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>target-1</from-outcome>
+			<to-view-id>/events/navi-targets/target-1.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>target-2</from-outcome>
+			<to-view-id>/events/navi-targets/target-2.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>target-3</from-outcome>
+			<to-view-id>/events/navi-targets/target-3.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<description>Navigation aus Verzeichnis wieder heraus</description>
+		<from-view-id>/events/navi-targets/*</from-view-id>
+		<navigation-case>
+			<from-outcome>return</from-outcome>
+			<to-view-id>/events/explicit-navigation.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
 	 
 	<!--
 	<lifecycle>
