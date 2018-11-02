@@ -6,15 +6,22 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
+/**
+ * 
+ * @author Bernd Müller
+ *
+ */
 public class ValueExpressionsIT {
 
 	private static WebDriver driver;
 	
 	@BeforeClass
 	public static void setUp() {
-		driver = new FirefoxDriver();
+		//driver = new FirefoxDriver();
+		System.setProperty("webdriver.chrome.driver", "/java/libs/chromedriver");
+		driver = new ChromeDriver();
 		driver.get("http://localhost:8080/jsf-im-detail/el/value-expressions.jsf");
 	}
 	

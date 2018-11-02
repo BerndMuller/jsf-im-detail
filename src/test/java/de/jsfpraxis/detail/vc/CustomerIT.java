@@ -10,8 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 /**
  * 
- * 
- * @author Bernd Müll
+ * @author Bernd Müller
  *
  */
 public class CustomerIT {

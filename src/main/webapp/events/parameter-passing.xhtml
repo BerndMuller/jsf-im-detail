@@ -20,15 +20,15 @@
 			<f:facet name="header">Parameterübergabe mit EL-Methode</f:facet>
 			<h:inputText id="op10" value="#{pp.operands1[0]}" size="5" />
 			<h:panelGrid columns="1">
-				<h:commandLink action="#{pp.actionWithMethodParam('+')}">
+				<h:commandLink id="op0plus" action="#{pp.actionWithMethodParam('+')}">
 					<h:graphicImage library="images" name="plus.svg" width="10px" />
 					<f:ajax execute="op10 op20" render="res0" />
 				</h:commandLink>
-				<h:commandLink action="#{pp.actionWithMethodParam('-')}">
+				<h:commandLink id="op0minus" action="#{pp.actionWithMethodParam('-')}">
 					<h:graphicImage library="images" name="minus.svg" width="10px" />
 					<f:ajax execute="op10 op20" render="res0" />
 				</h:commandLink>
-				<h:commandLink action="#{pp.actionWithMethodParam('*')}">
+				<h:commandLink id="op0times" action="#{pp.actionWithMethodParam('*')}">
 					<h:graphicImage library="images" name="multiply.svg" width="10px" />
 					<f:ajax execute="op10 op20" render="res0" />
 				</h:commandLink>
@@ -42,17 +42,17 @@
 			<f:facet name="header">Parameterübergabe mit &lt;f:setPropertyActionListener&gt;</f:facet>
 			<h:inputText id="op11" value="#{pp.operands1[1]}" size="5" />
 			<h:panelGrid columns="1">
-				<h:commandLink action="#{pp.actionWithFSetPropertyActionListener}">
+				<h:commandLink id="op1plus" action="#{pp.actionWithFSetPropertyActionListener}">
 					<f:setPropertyActionListener value="+" target="#{pp.operator}" />
 					<h:graphicImage library="images" name="plus.svg" width="10px" />
 					<f:ajax execute="op11 op21" render="res1" />
 				</h:commandLink>
-				<h:commandLink action="#{pp.actionWithFSetPropertyActionListener}">
+				<h:commandLink id="op1minus" action="#{pp.actionWithFSetPropertyActionListener}">
 					<f:setPropertyActionListener value="-" target="#{pp.operator}" />
 					<h:graphicImage library="images" name="minus.svg" width="10px" />
 					<f:ajax execute="op11 op21" render="res1" />
 				</h:commandLink>
-				<h:commandLink action="#{pp.actionWithFSetPropertyActionListener}">
+				<h:commandLink id="op1times" action="#{pp.actionWithFSetPropertyActionListener}">
 					<f:setPropertyActionListener value="*" target="#{pp.operator}" />
 					<h:graphicImage library="images" name="multiply.svg" width="10px" />
 					<f:ajax execute="op11 op21" render="res1" />
@@ -67,17 +67,17 @@
 			<f:facet name="header">Parameterübergabe mit &lt;f:param&gt;</f:facet>
 			<h:inputText id="op12" value="#{pp.operands1[2]}" size="5" />
 			<h:panelGrid columns="1">
-				<h:commandLink action="#{pp.actionWithFParam}">
+				<h:commandLink id="op2plus" action="#{pp.actionWithFParam}">
 					<f:param name="operator" value="+" />
 					<h:graphicImage library="images" name="plus.svg" width="10px" />
 					<f:ajax execute="op12 op22" render="res2" />
 				</h:commandLink>
-				<h:commandLink action="#{pp.actionWithFParam}">
+				<h:commandLink id="op2minus" action="#{pp.actionWithFParam}">
 					<f:param name="operator" value="-" />
 					<h:graphicImage library="images" name="minus.svg" width="10px" />
 					<f:ajax execute="op12 op22" render="res2" />
 				</h:commandLink>
-				<h:commandLink action="#{pp.actionWithFParam}">
+				<h:commandLink id="op2times" action="#{pp.actionWithFParam}">
 					<f:param name="operator" value="*" />
 					<h:graphicImage library="images" name="multiply.svg" width="10px" />
 					<f:ajax execute="op12 op22" render="res2" />
@@ -92,17 +92,17 @@
 			<f:facet name="header">Parameterübergabe mit &lt;f:attribute&gt;</f:facet>
 			<h:inputText id="op13" value="#{pp.operands1[3]}" size="5" />
 			<h:panelGrid columns="1">
-				<h:commandLink actionListener="#{pp.actionListenerWithFAttribute}">
+				<h:commandLink id="op3plus" actionListener="#{pp.actionListenerWithFAttribute}">
 					<f:attribute name="operator" value="+" />
 					<h:graphicImage library="images" name="plus.svg" width="10px" />
 					<f:ajax execute="op13 op23" render="res3" />
 				</h:commandLink>
-				<h:commandLink actionListener="#{pp.actionListenerWithFAttribute}">
+				<h:commandLink id="op3minus" actionListener="#{pp.actionListenerWithFAttribute}">
 					<f:attribute name="operator" value="-" />
 					<h:graphicImage library="images" name="minus.svg" width="10px" />
 					<f:ajax execute="op13 op23" render="res3" />
 				</h:commandLink>
-				<h:commandLink actionListener="#{pp.actionListenerWithFAttribute}">
+				<h:commandLink id="op3times" actionListener="#{pp.actionListenerWithFAttribute}">
 					<f:attribute name="operator" value="*" />
 					<h:graphicImage library="images" name="multiply.svg" width="10px" />
 					<f:ajax execute="op13 op23" render="res3" />
