@@ -75,7 +75,6 @@ public class ExpressionLanguageController {
 		return (Integer) expressionFactory.createValueExpression(el, "#{17 + 4}", Integer.class).getValue(el);
 	}
 	
-	@SuppressWarnings("el-syntax")
 	public void evalELInput() {
 		if (elInput == null) {
 			return;
