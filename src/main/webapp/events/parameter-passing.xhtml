@@ -113,7 +113,17 @@
 			<h:inputText id="res3" value="#{pp.results[3]}" size="5" disabled="true"/>
 		</h:panelGrid>
 
-
+		<h:panelGrid columns="1">
+			<f:facet name="header">Parameterübergabe komplexer Objekte</f:facet>
+			<h:commandButton action="#{pp.actionMethodWithComplexType(pp)}" value="Methodenparameter" />
+			<h:commandButton action="#{pp.actionMethodWithComplexType(null)}" value="Mit &lt;f:setPropertyActionListener&gt;">
+				<f:setPropertyActionListener value="#{pp}" target="#{pp.ppc}" />
+			</h:commandButton>
+			<h:commandButton actionListener="#{pp.actionListenerWithComplexType}" value="Mit &lt;f:attribute&gt;">
+				<f:attribute name="ppc" value="#{pp}" />
+			</h:commandButton>
+			
+		</h:panelGrid>
 
 	</ui:define>
 
