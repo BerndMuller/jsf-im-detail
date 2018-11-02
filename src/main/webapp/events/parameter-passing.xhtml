@@ -1,0 +1,120 @@
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="header">Parameterübergabe</ui:define>
+	
+	<ui:define name="css">
+		td {
+    		text-align: center;
+    		/* vertical-align: middle; */
+		}
+	</ui:define>
+	
+	<ui:define name="main">
+	
+		<h:panelGrid columns="5">
+			<f:facet name="header">Parameterübergabe mit EL-Methode</f:facet>
+			<h:inputText id="op10" value="#{pp.operands1[0]}" size="5" />
+			<h:panelGrid columns="1">
+				<h:commandLink action="#{pp.actionWithMethodParam('+')}">
+					<h:graphicImage library="images" name="plus.svg" width="10px" />
+					<f:ajax execute="op10 op20" render="res0" />
+				</h:commandLink>
+				<h:commandLink action="#{pp.actionWithMethodParam('-')}">
+					<h:graphicImage library="images" name="minus.svg" width="10px" />
+					<f:ajax execute="op10 op20" render="res0" />
+				</h:commandLink>
+				<h:commandLink action="#{pp.actionWithMethodParam('*')}">
+					<h:graphicImage library="images" name="multiply.svg" width="10px" />
+					<f:ajax execute="op10 op20" render="res0" />
+				</h:commandLink>
+			</h:panelGrid>
+			<h:inputText id="op20" value="#{pp.operands2[0]}" size="5" />
+			<h:graphicImage library="images" name="equals.svg" width="10px" />
+			<h:inputText id="res0" value="#{pp.results[0]}" size="5" disabled="true"/>
+		</h:panelGrid>
+
+		<h:panelGrid columns="5">
+			<f:facet name="header">Parameterübergabe mit &lt;f:setPropertyActionListener&gt;</f:facet>
+			<h:inputText id="op11" value="#{pp.operands1[1]}" size="5" />
+			<h:panelGrid columns="1">
+				<h:commandLink action="#{pp.actionWithFSetPropertyActionListener}">
+					<f:setPropertyActionListener value="+" target="#{pp.operator}" />
+					<h:graphicImage library="images" name="plus.svg" width="10px" />
+					<f:ajax execute="op11 op21" render="res1" />
+				</h:commandLink>
+				<h:commandLink action="#{pp.actionWithFSetPropertyActionListener}">
+					<f:setPropertyActionListener value="-" target="#{pp.operator}" />
+					<h:graphicImage library="images" name="minus.svg" width="10px" />
+					<f:ajax execute="op11 op21" render="res1" />
+				</h:commandLink>
+				<h:commandLink action="#{pp.actionWithFSetPropertyActionListener}">
+					<f:setPropertyActionListener value="*" target="#{pp.operator}" />
+					<h:graphicImage library="images" name="multiply.svg" width="10px" />
+					<f:ajax execute="op11 op21" render="res1" />
+				</h:commandLink>
+			</h:panelGrid>
+			<h:inputText id="op21" value="#{pp.operands2[1]}" size="5" />
+			<h:graphicImage library="images" name="equals.svg" width="10px" />
+			<h:inputText id="res1" value="#{pp.results[1]}" size="5" disabled="true"/>
+		</h:panelGrid>
+
+		<h:panelGrid columns="5">
+			<f:facet name="header">Parameterübergabe mit &lt;f:param&gt;</f:facet>
+			<h:inputText id="op12" value="#{pp.operands1[2]}" size="5" />
+			<h:panelGrid columns="1">
+				<h:commandLink action="#{pp.actionWithFParam}">
+					<f:param name="operator" value="+" />
+					<h:graphicImage library="images" name="plus.svg" width="10px" />
+					<f:ajax execute="op12 op22" render="res2" />
+				</h:commandLink>
+				<h:commandLink action="#{pp.actionWithFParam}">
+					<f:param name="operator" value="-" />
+					<h:graphicImage library="images" name="minus.svg" width="10px" />
+					<f:ajax execute="op12 op22" render="res2" />
+				</h:commandLink>
+				<h:commandLink action="#{pp.actionWithFParam}">
+					<f:param name="operator" value="*" />
+					<h:graphicImage library="images" name="multiply.svg" width="10px" />
+					<f:ajax execute="op12 op22" render="res2" />
+				</h:commandLink>
+			</h:panelGrid>
+			<h:inputText id="op22" value="#{pp.operands2[2]}" size="5" />
+			<h:graphicImage library="images" name="equals.svg" width="10px" />
+			<h:inputText id="res2" value="#{pp.results[2]}" size="5" disabled="true"/>
+		</h:panelGrid>
+
+		<h:panelGrid columns="5">
+			<f:facet name="header">Parameterübergabe mit &lt;f:attribute&gt;</f:facet>
+			<h:inputText id="op13" value="#{pp.operands1[3]}" size="5" />
+			<h:panelGrid columns="1">
+				<h:commandLink actionListener="#{pp.actionListenerWithFAttribute}">
+					<f:attribute name="operator" value="+" />
+					<h:graphicImage library="images" name="plus.svg" width="10px" />
+					<f:ajax execute="op13 op23" render="res3" />
+				</h:commandLink>
+				<h:commandLink actionListener="#{pp.actionListenerWithFAttribute}">
+					<f:attribute name="operator" value="-" />
+					<h:graphicImage library="images" name="minus.svg" width="10px" />
+					<f:ajax execute="op13 op23" render="res3" />
+				</h:commandLink>
+				<h:commandLink actionListener="#{pp.actionListenerWithFAttribute}">
+					<f:attribute name="operator" value="*" />
+					<h:graphicImage library="images" name="multiply.svg" width="10px" />
+					<f:ajax execute="op13 op23" render="res3" />
+				</h:commandLink>
+			</h:panelGrid>
+			<h:inputText id="op23" value="#{pp.operands2[3]}" size="5" />
+			<h:graphicImage library="images" name="equals.svg" width="10px" />
+			<h:inputText id="res3" value="#{pp.results[3]}" size="5" disabled="true"/>
+		</h:panelGrid>
+
+
+
+	</ui:define>
+
+</ui:composition>
