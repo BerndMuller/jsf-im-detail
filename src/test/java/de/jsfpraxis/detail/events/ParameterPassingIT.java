@@ -42,7 +42,7 @@ public class ParameterPassingIT {
 		driver.findElement(By.id("form:op10")).sendKeys(A);
 		driver.findElement(By.id("form:op20")).sendKeys(B);
 		driver.findElement(By.id("form:op0plus")).click();
-		//Thread.sleep(100);
+		Thread.sleep(100);
 		Assert.assertEquals(A_PLUS_B, driver.findElement(By.id("form:res0")).getAttribute("value"));
 	}
 
@@ -52,7 +52,7 @@ public class ParameterPassingIT {
 		driver.findElement(By.id("form:op10")).sendKeys(A);
 		driver.findElement(By.id("form:op20")).sendKeys(B);
 		driver.findElement(By.id("form:op0minus")).click();
-		//Thread.sleep(100);
+		Thread.sleep(100);
 		Assert.assertEquals(A_MINUS_B, driver.findElement(By.id("form:res0")).getAttribute("value"));
 	}
 
@@ -62,7 +62,7 @@ public class ParameterPassingIT {
 		driver.findElement(By.id("form:op10")).sendKeys(A);
 		driver.findElement(By.id("form:op20")).sendKeys(B);
 		driver.findElement(By.id("form:op0times")).click();
-		//Thread.sleep(100);
+		Thread.sleep(100);
 		Assert.assertEquals(A_TIMES_B, driver.findElement(By.id("form:res0")).getAttribute("value"));
 	}
 
@@ -72,7 +72,7 @@ public class ParameterPassingIT {
 		driver.findElement(By.id("form:op11")).sendKeys(A);
 		driver.findElement(By.id("form:op21")).sendKeys(B);
 		driver.findElement(By.id("form:op1plus")).click();
-		//Thread.sleep(100);
+		Thread.sleep(100);
 		Assert.assertEquals(A_PLUS_B, driver.findElement(By.id("form:res1")).getAttribute("value"));
 	}
 
@@ -82,7 +82,7 @@ public class ParameterPassingIT {
 		driver.findElement(By.id("form:op11")).sendKeys(A);
 		driver.findElement(By.id("form:op21")).sendKeys(B);
 		driver.findElement(By.id("form:op1minus")).click();
-		//Thread.sleep(100);
+		Thread.sleep(100);
 		Assert.assertEquals(A_MINUS_B, driver.findElement(By.id("form:res1")).getAttribute("value"));
 	}
 
@@ -92,7 +92,7 @@ public class ParameterPassingIT {
 		driver.findElement(By.id("form:op11")).sendKeys(A);
 		driver.findElement(By.id("form:op21")).sendKeys(B);
 		driver.findElement(By.id("form:op1times")).click();
-		//Thread.sleep(100);
+		Thread.sleep(100);
 		Assert.assertEquals(A_TIMES_B, driver.findElement(By.id("form:res1")).getAttribute("value"));
 	}
 
@@ -102,7 +102,7 @@ public class ParameterPassingIT {
 		driver.findElement(By.id("form:op12")).sendKeys(A);
 		driver.findElement(By.id("form:op22")).sendKeys(B);
 		driver.findElement(By.id("form:op2plus")).click();
-		//Thread.sleep(100);
+		Thread.sleep(100);
 		Assert.assertEquals(A_PLUS_B, driver.findElement(By.id("form:res2")).getAttribute("value"));
 	}
 
@@ -112,7 +112,7 @@ public class ParameterPassingIT {
 		driver.findElement(By.id("form:op12")).sendKeys(A);
 		driver.findElement(By.id("form:op22")).sendKeys(B);
 		driver.findElement(By.id("form:op2minus")).click();
-		//Thread.sleep(100);
+		Thread.sleep(100);
 		Assert.assertEquals(A_MINUS_B, driver.findElement(By.id("form:res2")).getAttribute("value"));
 	}
 
@@ -122,7 +122,7 @@ public class ParameterPassingIT {
 		driver.findElement(By.id("form:op12")).sendKeys(A);
 		driver.findElement(By.id("form:op22")).sendKeys(B);
 		driver.findElement(By.id("form:op2times")).click();
-		//Thread.sleep(100);
+		Thread.sleep(100);
 		Assert.assertEquals(A_TIMES_B, driver.findElement(By.id("form:res2")).getAttribute("value"));
 	}
 
@@ -133,7 +133,7 @@ public class ParameterPassingIT {
 		driver.findElement(By.id("form:op13")).sendKeys(A);
 		driver.findElement(By.id("form:op23")).sendKeys(B);
 		driver.findElement(By.id("form:op3plus")).click();
-		//Thread.sleep(100);
+		Thread.sleep(100);
 		Assert.assertEquals(A_PLUS_B, driver.findElement(By.id("form:res3")).getAttribute("value"));
 	}
 
@@ -143,7 +143,7 @@ public class ParameterPassingIT {
 		driver.findElement(By.id("form:op13")).sendKeys(A);
 		driver.findElement(By.id("form:op23")).sendKeys(B);
 		driver.findElement(By.id("form:op3minus")).click();
-		//Thread.sleep(100);
+		Thread.sleep(100);
 		Assert.assertEquals(A_MINUS_B, driver.findElement(By.id("form:res3")).getAttribute("value"));
 	}
 
@@ -153,7 +153,7 @@ public class ParameterPassingIT {
 		driver.findElement(By.id("form:op13")).sendKeys(A);
 		driver.findElement(By.id("form:op23")).sendKeys(B);
 		driver.findElement(By.id("form:op3times")).click();
-		//Thread.sleep(100);
+		Thread.sleep(100);
 		Assert.assertEquals(A_TIMES_B, driver.findElement(By.id("form:res3")).getAttribute("value"));
 	}
 
