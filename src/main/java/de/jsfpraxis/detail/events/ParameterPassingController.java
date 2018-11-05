@@ -56,7 +56,7 @@ public class ParameterPassingController {
 	public void actionWithMethodParam(String operator) throws Exception {
 		ExpressionFactory expressionFactory = facesContext.getApplication().getExpressionFactory();
 		ELContext el = facesContext.getELContext();
-		Long value = (Long) expressionFactory.createValueExpression(el, "#{" + operands1[0] + operator + operands2[0] + "}", Object.class).getValue(el);
+		Long value = (Long) expressionFactory.createValueExpression(el, "#{" + operands1[0] + operator + operands2[0] + "}", Long.class).getValue(el);
 		results[0] = value.intValue();
 	}
 	
@@ -66,7 +66,7 @@ public class ParameterPassingController {
 	public void actionWithFSetPropertyActionListener() {
 		ExpressionFactory expressionFactory = facesContext.getApplication().getExpressionFactory();
 		ELContext el = facesContext.getELContext();
-		Long value = (Long) expressionFactory.createValueExpression(el, "#{" + operands1[1] + operator + operands2[1] + "}", Object.class).getValue(el);
+		Long value = (Long) expressionFactory.createValueExpression(el, "#{" + operands1[1] + operator + operands2[1] + "}", Long.class).getValue(el);
 		results[1] = value.intValue();
 	}
 
@@ -77,7 +77,7 @@ public class ParameterPassingController {
 		String operator = requestParams.get("operator");
 		ExpressionFactory expressionFactory = facesContext.getApplication().getExpressionFactory();
 		ELContext el = facesContext.getELContext();
-		Long value = (Long) expressionFactory.createValueExpression(el, "#{" + operands1[2] + operator + operands2[2] + "}", Object.class).getValue(el);
+		Long value = (Long) expressionFactory.createValueExpression(el, "#{" + operands1[2] + operator + operands2[2] + "}", Long.class).getValue(el);
 		results[2] = value.intValue();
 	}
 	
@@ -88,7 +88,7 @@ public class ParameterPassingController {
 		String operator = (String) ae.getComponent().getAttributes().get("operator");
 		ExpressionFactory expressionFactory = facesContext.getApplication().getExpressionFactory();
 		ELContext el = facesContext.getELContext();
-		Long value = (Long) expressionFactory.createValueExpression(el, "#{" + operands1[3] + operator + operands2[3] + "}", Object.class).getValue(el);
+		Long value = (Long) expressionFactory.createValueExpression(el, "#{" + operands1[3] + operator + operands2[3] + "}", Long.class).getValue(el);
 		results[3] = value.intValue();
 	}
 	
