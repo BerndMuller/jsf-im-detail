@@ -103,7 +103,7 @@
 					<f:ajax execute="op13 op23" render="res3" />
 				</h:commandLink>
 				<h:commandLink id="op3times" actionListener="#{pp.actionListenerWithFAttribute}">
-					<f:attribute name="operator" value="*" />
+					<f:attributes value="#{{'operator':'*'}}" />
 					<h:graphicImage library="images" name="multiply.svg" width="10px" />
 					<f:ajax execute="op13 op23" render="res3" />
 				</h:commandLink>
@@ -122,7 +122,6 @@
 			<h:commandButton actionListener="#{pp.actionListenerWithComplexType}" value="Mit &lt;f:attribute&gt;">
 				<f:attribute name="ppc" value="#{pp}" />
 			</h:commandButton>
-			
 		</h:panelGrid>
 
 	</ui:define>
