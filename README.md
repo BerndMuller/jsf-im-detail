@@ -23,7 +23,7 @@ mvn8  -Dit.test=ParameterPassingIT failsafe:integration-test
 
 Java-EE-8-Application-Server!
 
-Wir haben mit Payara 5 und WildFly 13 getestet. 
+Wir haben mit Payara 5 und WildFly 14 getestet. 
 
 
 
