@@ -1,0 +1,40 @@
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="header">Events</ui:define>
+	
+	<ui:define name="main">
+
+		<h:panelGrid columns="1">
+			<f:facet name="header">Data-Model-Events</f:facet>
+			
+			<h:dataTable value="#{comedianController.comedians}" var="comedian">
+				<h:column>
+					<f:facet name="header">Vorname</f:facet>
+					#{comedian.firstname}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Nachname</f:facet>
+					#{comedian.lastname}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Geburtstag</f:facet>
+					<h:outputText value="#{comedian.dob}">
+						<f:convertDateTime type="localDate" />
+					</h:outputText>
+				</h:column>
+				<h:column>
+					<h:commandButton action="#{comedianController.edit}" value="Ändern" />
+				</h:column>
+			</h:dataTable>
+
+		</h:panelGrid>
+		<h:messages />
+		
+	</ui:define>
+
+</ui:composition>
