@@ -1,6 +1,7 @@
 package de.jsfpraxis.detail.events;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
@@ -12,9 +13,16 @@ import javax.faces.model.ListDataModel;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+/**
+ * Managed Bean für das Data-Model-Event-Beispiel.
+ * 
+ * Das Sortieren funktioniert nur auf der Übersichtsseite. Damit es auch im
+ * Zusammenspiel mit der Ändern-Seite funktioniert, muss die Bean session-scoped sein.
+ * 
+ * @author Bernd Müller
+ *
+ */
 @Named
-//@SessionScoped
-//@RequestScoped
 @ConversationScoped
 public class ComedianController implements Serializable {
 
@@ -42,6 +50,21 @@ public class ComedianController implements Serializable {
 		System.out.println("Comedian in save: " + comedian);
 		conversation.end();
 		return "comedians.xhtml";
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void sortByFirstname() {
+		((List<Comedian>) comedians.getWrappedData()).sort((c1, c2) -> c1.getFirstname().compareTo(c2.getFirstname()));
+	}
+
+	@SuppressWarnings("unchecked")
+	public void sortByLastname() {
+		((List<Comedian>) comedians.getWrappedData()).sort((c1, c2) -> c1.getLastname().compareTo(c2.getLastname()));
+	}
+
+	@SuppressWarnings("unchecked")
+	public void sortByDob() {
+		((List<Comedian>) comedians.getWrappedData()).sort((c1, c2) -> (int) (c1.getDob().toEpochDay() - c2.getDob().toEpochDay()));
 	}
 
 	// Getter und Setter

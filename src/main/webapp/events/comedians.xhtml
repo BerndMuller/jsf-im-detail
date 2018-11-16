@@ -7,22 +7,34 @@
 
 	<ui:define name="header">Events</ui:define>
 	
+	<ui:define name="css">
+		a:link {
+    		color: black;
+		}
+	</ui:define>
+	
 	<ui:define name="main">
 
 		<h:panelGrid columns="1">
-			<f:facet name="header">Data-Model-Events</f:facet>
+			<f:facet name="header">Comedians (Data-Model-Events)</f:facet>
 			
 			<h:dataTable value="#{comedianController.comedians}" var="comedian">
 				<h:column>
-					<f:facet name="header">Vorname</f:facet>
+					<f:facet name="header">
+						<h:commandLink action="#{comedianController.sortByFirstname}" value="Vorname" style="text-decoration: none;" />
+					</f:facet>
 					#{comedian.firstname}
 				</h:column>
 				<h:column>
-					<f:facet name="header">Nachname</f:facet>
+					<f:facet name="header">
+						<h:commandLink action="#{comedianController.sortByLastname}" value="Nachname" style="text-decoration: none;" />
+					</f:facet>
 					#{comedian.lastname}
 				</h:column>
 				<h:column>
-					<f:facet name="header">Geburtstag</f:facet>
+					<f:facet name="header">
+						<h:commandLink action="#{comedianController.sortByDob}" value="Geburtstag" style="text-decoration: none;" />
+					</f:facet>
 					<h:outputText value="#{comedian.dob}">
 						<f:convertDateTime type="localDate" />
 					</h:outputText>
