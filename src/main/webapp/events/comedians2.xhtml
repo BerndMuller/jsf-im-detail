@@ -1,0 +1,70 @@
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="header">Events</ui:define>
+	
+	<ui:define name="css">
+		a:link {
+    		color: black;
+		}
+	</ui:define>
+	
+	<ui:define name="main">
+
+		<h:panelGrid columns="1">
+			<f:facet name="header">Comedians (Übersicht)</f:facet>
+			
+			<h:dataTable value="#{cc2.comedians}" var="comedian">
+				<h:column>
+					<f:facet name="header">
+						<h:commandLink action="#{cc2.sortByFirstname}" value="Vorname" style="text-decoration: none;" />
+					</f:facet>
+					#{comedian.firstname}
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:commandLink action="#{cc2.sortByLastname}" value="Nachname" style="text-decoration: none;" />
+					</f:facet>
+					#{comedian.lastname}
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:commandLink action="#{cc2.sortByDob}" value="Geburtstag" style="text-decoration: none;" />
+					</f:facet>
+					<h:outputText value="#{comedian.dob}">
+						<f:convertDateTime type="localDate" />
+					</h:outputText>
+				</h:column>
+				<h:column>
+					<h:commandButton action="#{cc2.edit}" value="Ändern" />
+				</h:column>
+			</h:dataTable>
+
+		</h:panelGrid>
+
+		<br/><br/><br/>
+		
+		<h:panelGrid columns="2">
+			<f:facet name="header">Comedian (Ändern)</f:facet>
+			
+			<h:outputLabel value="Vorname" for="firstname" />
+			<h:inputText id="firstname" value="#{cc2.comedian.firstname}" /> 
+
+			<h:outputLabel value="Nachname" for="lastname" />
+			<h:inputText id="lastname" value="#{cc2.comedian.lastname}" /> 
+
+			<h:outputLabel value="Geburtstag" for="dob" />
+			<h:inputText id="dob" value="#{cc2.comedian.dob}">
+				<f:convertDateTime type="localDate" />
+			</h:inputText> 
+				
+			<h:commandButton action="#{cc2.save}" value="Speichern" />
+
+		</h:panelGrid>
+	</ui:define>
+
+</ui:composition>
