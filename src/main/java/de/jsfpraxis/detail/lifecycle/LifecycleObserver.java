@@ -18,13 +18,13 @@ public class LifecycleObserver implements PhaseListener {
 
 	@Override
 	public void afterPhase(PhaseEvent pe) {
-		log.info("after " + pe.getPhaseId().toString());
+		log.info("after " + pe.getPhaseId());
 	}
 
 	@Override
 	public void beforePhase(PhaseEvent pe) {
 		log.info("request locale: " + externalContext.getRequestLocale());
-		log.info("before " + pe.getPhaseId().toString());
+		log.info("before " + pe.getPhaseId());
 	}
 
 	@Override

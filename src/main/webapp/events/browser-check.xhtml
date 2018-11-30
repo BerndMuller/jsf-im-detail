@@ -1,0 +1,24 @@
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="header">Events</ui:define>
+	
+	<ui:define name="main">
+
+		<h:panelGrid columns="1">
+			<f:facet name="header">Browser-Check (Komponenten-Events)</f:facet>
+			<f:event type="javax.faces.event.PreRenderViewEvent" listener="#{browserChecker.preRenderView}" />
+			<f:event type="preRenderView" listener="#{browserChecker.preRenderView}" />
+			<h:panelGroup id="check" layout="block">
+				<f:event type="preRenderComponent" listener="#{browserChecker.preRenderComponent}" />
+				<really-new-html-tag/>
+			</h:panelGroup>
+		</h:panelGrid>
+		
+	</ui:define>
+
+</ui:composition>
