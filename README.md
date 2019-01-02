@@ -14,16 +14,11 @@ mvn clean package
 Dann deployen Sie wie gewohnt auf Ihrem Java-EE-8-Application-Server
 
 
-Nur einen Integrationstest ausführen:
-```
-mvn8  -Dit.test=ParameterPassingIT failsafe:integration-test
-```
-
 ### Prerequisites
 
 Java-EE-8-Application-Server!
 
-Wir haben mit Payara 5 und WildFly 14 getestet. 
+Wir haben mit Payara 5 und WildFly 15 getestet. 
 
 
 
