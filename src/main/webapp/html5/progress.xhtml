@@ -1,0 +1,32 @@
+﻿<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:jsf="http://xmlns.jcp.org/jsf"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="header">HTML5</ui:define>
+	
+	<ui:define name="main">
+
+		<h:panelGrid columns="1">
+			<f:facet name="header">Pass-Through-Elements ohne passende JSF-Komponente</f:facet>
+			
+			<h:panelGroup>
+				0
+				<progress jsf:id="progress" max="60" value="#{progressController.value}">
+					<f:ajax event="click" render="@this" />
+				</progress>
+				100
+			</h:panelGroup>
+
+  			<h:outputScript>
+  				<!-- runs forever -->
+  				setInterval(function(){document.getElementById('form:progress').click()}, 1000); 	
+			</h:outputScript>
+			
+		</h:panelGrid>
+		
+	</ui:define>
+
+</ui:composition>

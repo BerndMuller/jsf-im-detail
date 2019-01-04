@@ -1,0 +1,30 @@
+﻿<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:jsf="http://xmlns.jcp.org/jsf"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="header">HTML5</ui:define>
+	
+	<ui:define name="main">
+
+		<h:panelGrid columns="2">
+			<f:facet name="header">Pass-Through-Elements</f:facet>
+			
+			<h:panelGroup>
+				&lt;h:input jsf:value="\#{ptc.email1}" type="email" placeholder="E-Mail" /&gt;
+			</h:panelGroup>
+			
+        	<input jsf:id="email" jsf:value="#{ptc.email1}" type="email" placeholder="E-Mail">
+        		<f:ajax listener="#{ptc.listener}" /> <!-- Gibt Komponententyp von <input> aus. Ist HtmlInputText -->
+        	</input>
+        	
+		</h:panelGrid>
+		
+		<h:messages />
+		<button jsf:action="#{ptc.save}">Speichern</button>
+		
+	</ui:define>
+
+</ui:composition>

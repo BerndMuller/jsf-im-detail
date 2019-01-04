@@ -48,7 +48,7 @@ select {
   	padding: 1px 1px 1px 1px;
 }
 
-input[type=button], input[type=submit] {
+input[type=button], input[type=submit], button {
 	background-color: #E0FFFF;
 	border: 1px solid #111;
 	margin: 3px;

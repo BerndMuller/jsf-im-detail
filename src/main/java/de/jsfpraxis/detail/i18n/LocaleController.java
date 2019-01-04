@@ -38,7 +38,7 @@ public class LocaleController implements Serializable {
 	@PostConstruct
     public void init() {
         locale = externalContext.getRequestLocale();
-        log.info("locale in init() gesetzt auf: " + locale);
+        //log.info("locale in init() gesetzt auf: " + locale);
     }
 
 

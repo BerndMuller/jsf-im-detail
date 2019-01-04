@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.inject.Named;
 
 
@@ -40,6 +41,16 @@ public class PassThroughController {
 			put("type", "email");
 			put("placeholder", "E-Mail");
 		}};
+	}
+	
+	/**
+	 * Listener, um Komponententyp eines Pass-Through-Elements zu bestimmen.
+	 *  
+	 * 
+	 * @param event das auslösende Ajax-Event
+	 */
+	public void listener(AjaxBehaviorEvent event) {
+		log.info("Komponente ist: " + event.getComponent().getClass().getCanonicalName());
 	}
 
 	
