@@ -14,15 +14,17 @@
 			
 			<h:panelGroup>
 				0
-				<progress jsf:id="progress" max="60" value="#{progressController.value}">
+				<progress jsf:id="progress" max="59" value="#{progressController.value}">
 					<f:ajax event="click" render="@this" />
+					<!-- <f:ajax event="click" render="progress" /> -->
+					<!-- <f:ajax event="click" render="form:progress" /> -->
 				</progress>
 				100
 			</h:panelGroup>
 
   			<h:outputScript>
   				<!-- runs forever -->
-  				setInterval(function(){document.getElementById('form:progress').click()}, 1000); 	
+  				setInterval(function(){document.getElementById('form:progress').click()}, 1000);
 			</h:outputScript>
 			
 		</h:panelGrid>

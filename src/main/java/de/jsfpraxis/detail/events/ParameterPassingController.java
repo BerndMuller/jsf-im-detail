@@ -51,7 +51,7 @@ public class ParameterPassingController {
 	 * Method called with simple EL method parameter.
 	 * 
 	 * @param operator The operatator to use
-	 * @throws Exception If EL syntax error.
+	 * @throws Exception If EL syntax error
 	 */
 	public void actionWithMethodParam(String operator) throws Exception {
 		ExpressionFactory expressionFactory = facesContext.getApplication().getExpressionFactory();
@@ -72,6 +72,8 @@ public class ParameterPassingController {
 
 	/**
 	 * Method called with {@code <f:param>}.
+	 * 
+	 * @throws Exception If EL syntax error
 	 */
 	public void actionWithFParam() throws Exception {
 		String operator = requestParams.get("operator");
@@ -83,6 +85,8 @@ public class ParameterPassingController {
 	
 	/**
 	 * Method called with {@code <f:attribute>}.
+	 * 
+	 * @param ae The action event
 	 */
 	public void actionListenerWithFAttribute(ActionEvent ae) {
 		String operator = (String) ae.getComponent().getAttributes().get("operator");
