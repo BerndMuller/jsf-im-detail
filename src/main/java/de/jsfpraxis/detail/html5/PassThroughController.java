@@ -1,5 +1,6 @@
 package de.jsfpraxis.detail.html5;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -24,6 +25,7 @@ public class PassThroughController {
 	private String email1;
 	private String email2;
 	private String email3;
+	private LocalDate date;
 	
 	public PassThroughController() {
 	}
@@ -32,6 +34,7 @@ public class PassThroughController {
 		log.info("Gespeicherte E-Mail-Adresse 1: " + email1);
 		log.info("Gespeicherte E-Mail-Adresse 2: " + email2);
 		log.info("Gespeicherte E-Mail-Adresse 3: " + email3);
+		log.info("Gespeichertes Datum: " + date);
 		return null;
 	}
 	
@@ -74,6 +77,13 @@ public class PassThroughController {
 	}
 	public void setEmail3(String email3) {
 		this.email3 = email3;
+	}
+
+	public LocalDate getDate() {
+		return date;
+	}
+	public void setDate(LocalDate date) {
+		this.date = date;
 	}
 	
 }

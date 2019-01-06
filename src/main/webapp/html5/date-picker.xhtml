@@ -1,0 +1,30 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="header">HTML5</ui:define>
+	
+	<ui:define name="main">
+	
+		<h:panelGrid columns="2">
+			<f:facet name="header">HTML5 Date-Picker</f:facet>
+			
+			<h:panelGroup>
+				&lt;h:inputText value="\#{ptc.date}" pt:type="date" /&gt;
+			</h:panelGroup>
+			
+			<h:inputText id="date" value="#{ptc.date}" pt:type="date">
+				<f:convertDateTime type="localDate" pattern="yyyy-MM-dd"/>
+			</h:inputText>
+				
+		</h:panelGrid>
+		
+		<h:messages />
+		<h:commandButton action="#{ptc.save}" value="Speichern" />
+		
+	</ui:define>
+
+</ui:composition>
