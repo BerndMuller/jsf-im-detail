@@ -1,0 +1,41 @@
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="header">Ajax</ui:define>
+	
+	<ui:define name="css">
+		select {
+			scrollbar-width: none;
+		}
+	</ui:define>
+	
+	<ui:define name="main">	
+	
+		<h:panelGrid columns="2">
+			<f:facet name="header">Pick-List</f:facet>
+			<h:panelGrid columns="3" style="width: 30%; margin: 0 auto;">
+				<h:selectOneListbox id="left" value="#{pickListController.selectedLeft}" style="height: 7em;">
+					<f:selectItems value="#{pickListController.left}" />
+				</h:selectOneListbox>
+				<h:panelGroup>
+					<h:commandButton action="#{pickListController.addToRight}" value="&gt;">
+						<f:ajax execute="left" render="left right" />
+					</h:commandButton>
+					<br/>
+					<h:commandButton action="#{pickListController.addToLeft}" value="&lt;">
+						<f:ajax execute="right" render="left right" />
+					</h:commandButton>
+				</h:panelGroup>				
+				<h:selectOneListbox id="right" value="#{pickListController.selectedRight}" style="height: 7em;">
+					<f:selectItems value="#{pickListController.right}" />
+				</h:selectOneListbox>
+			</h:panelGrid>	
+		</h:panelGrid>
+
+	</ui:define>
+
+</ui:composition>

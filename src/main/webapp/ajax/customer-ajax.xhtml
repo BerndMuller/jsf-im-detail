@@ -1,0 +1,72 @@
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="header">Ajax</ui:define>
+	
+	<ui:define name="main">	
+	
+		<h:panelGrid columns="2">
+			<f:facet name="header">&lt;f:ajax&gt; in &lt;h:commandButton&gt;</f:facet>
+			Vorname:	
+			<h:panelGroup>
+				<h:inputText id="firstname" value="#{ajaxController.customer.firstName}" />
+			</h:panelGroup>
+			Nachname:
+			<h:panelGroup>
+				<h:inputText id="lastname" value="#{ajaxController.customer.lastName}" />
+			</h:panelGroup>
+			<h:commandButton action="#{ajaxController.save}" value="Speichern">
+				<!-- 
+				<f:ajax execute="@form" render="@form" />
+				 -->
+				<f:ajax execute="firstname lastname" render="whole"  />
+			</h:commandButton>
+			<h:panelGroup />
+			Kompletter Name:
+			<h:outputText id="whole" value="#{ajaxController.wholeName()}" />
+		</h:panelGrid>
+		
+		<br/>
+		
+		<h:panelGrid columns="2">
+			<f:facet name="header">&lt;f:ajax&gt; in &lt;h:inputText&gt;</f:facet>
+			Vorname:	
+			<h:panelGroup>
+				<h:inputText id="firstname2" value="#{ajaxController.customer.firstName}">
+					<f:ajax execute="@this" render="whole2"  />
+				</h:inputText>
+			</h:panelGroup>
+			Nachname:
+			<h:panelGroup>
+				<h:inputText id="lastname2" value="#{ajaxController.customer.lastName}">
+					<f:ajax execute="@this" render="whole2"  />
+				</h:inputText>
+			</h:panelGroup>
+			Kompletter Name:
+			<h:outputText id="whole2" value="#{ajaxController.customer.firstName} #{ajaxController.customer.lastName}" />
+		</h:panelGrid>
+
+		<h:panelGrid columns="2">
+			<f:facet name="header">&lt;f:ajax&gt; um &lt;h:inputText&gt; und keyup</f:facet>
+			<f:ajax event="keyup" execute="firstname3 lastname3" render="whole3">
+				Vorname:	
+				<h:panelGroup>
+					<h:inputText id="firstname3" value="#{ajaxController.customer.firstName}" />
+				</h:panelGroup>
+				Nachname:
+				<h:panelGroup>
+					<h:inputText id="lastname3" value="#{ajaxController.customer.lastName}" />
+				</h:panelGroup>
+			</f:ajax>
+			Kompletter Name:
+			<h:outputText id="whole3" value="#{ajaxController.customer.firstName} #{ajaxController.customer.lastName}" />
+		</h:panelGrid>
+
+
+	</ui:define>
+
+</ui:composition>
