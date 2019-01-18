@@ -8,17 +8,20 @@
 	<ui:define name="header">Ajax</ui:define>
 	
 	<ui:define name="main">	
+
+		<h:panelGrid columns="1">
+			<f:facet name="header">Achtung</f:facet>
+			Bitte Seite neu aufrufen, falls mehrere Eingaben nacheinander ausprobiert werden (da view scoped)
+		</h:panelGrid>
+		
+		<br/><br/>
 	
 		<h:panelGrid columns="2">
 			<f:facet name="header">&lt;f:ajax&gt; in &lt;h:commandButton&gt;</f:facet>
 			Vorname:	
-			<h:panelGroup>
-				<h:inputText id="firstname" value="#{ajaxController.customer.firstName}" />
-			</h:panelGroup>
+			<h:inputText id="firstname" value="#{ajaxController.customer.firstName}" />
 			Nachname:
-			<h:panelGroup>
-				<h:inputText id="lastname" value="#{ajaxController.customer.lastName}" />
-			</h:panelGroup>
+			<h:inputText id="lastname" value="#{ajaxController.customer.lastName}" />
 			<h:commandButton action="#{ajaxController.save}" value="Speichern">
 				<!-- 
 				<f:ajax execute="@form" render="@form" />
@@ -27,7 +30,7 @@
 			</h:commandButton>
 			<h:panelGroup />
 			Kompletter Name:
-			<h:outputText id="whole" value="#{ajaxController.wholeName()}" />
+			<h:outputText id="whole" value="#{ajaxController.wholeCustomerName()}" />
 		</h:panelGrid>
 		
 		<br/>
@@ -35,32 +38,26 @@
 		<h:panelGrid columns="2">
 			<f:facet name="header">&lt;f:ajax&gt; in &lt;h:inputText&gt;</f:facet>
 			Vorname:	
-			<h:panelGroup>
-				<h:inputText id="firstname2" value="#{ajaxController.customer.firstName}">
-					<f:ajax execute="@this" render="whole2"  />
-				</h:inputText>
-			</h:panelGroup>
+			<h:inputText id="firstname2" value="#{ajaxController.customer.firstName}">
+				<f:ajax execute="@this" render="whole2" listener="#{ajaxController.inputChangedListener}" />
+			</h:inputText>
 			Nachname:
-			<h:panelGroup>
-				<h:inputText id="lastname2" value="#{ajaxController.customer.lastName}">
-					<f:ajax execute="@this" render="whole2"  />
-				</h:inputText>
-			</h:panelGroup>
+			<h:inputText id="lastname2" value="#{ajaxController.customer.lastName}">
+				<f:ajax execute="@this" render="whole2" />
+			</h:inputText>
 			Kompletter Name:
 			<h:outputText id="whole2" value="#{ajaxController.customer.firstName} #{ajaxController.customer.lastName}" />
 		</h:panelGrid>
+		
+		<br/>
 
 		<h:panelGrid columns="2">
 			<f:facet name="header">&lt;f:ajax&gt; um &lt;h:inputText&gt; und keyup</f:facet>
 			<f:ajax event="keyup" execute="firstname3 lastname3" render="whole3">
 				Vorname:	
-				<h:panelGroup>
-					<h:inputText id="firstname3" value="#{ajaxController.customer.firstName}" />
-				</h:panelGroup>
+				<h:inputText id="firstname3" value="#{ajaxController.customer.firstName}" />
 				Nachname:
-				<h:panelGroup>
-					<h:inputText id="lastname3" value="#{ajaxController.customer.lastName}" />
-				</h:panelGroup>
+				<h:inputText id="lastname3" value="#{ajaxController.customer.lastName}" />
 			</f:ajax>
 			Kompletter Name:
 			<h:outputText id="whole3" value="#{ajaxController.customer.firstName} #{ajaxController.customer.lastName}" />

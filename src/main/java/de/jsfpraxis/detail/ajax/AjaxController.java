@@ -5,6 +5,9 @@ import java.util.Objects;
 import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
+import javax.faces.component.behavior.AjaxBehavior;
+import javax.faces.component.behavior.Behavior;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -30,12 +33,17 @@ public class AjaxController implements Serializable {
 	 * 
 	 * @return whole name of customer, i.e. 'firstname blank lastname' 
 	 */
-	public String wholeName() {
+	public String wholeCustomerName() {
 		return (Objects.isNull(customer.getFirstName()) ? "" : customer.getFirstName())
 				+ " "
 				+ (Objects.isNull(customer.getLastName()) ? "" : customer.getLastName());
-		
 	}
+	
+	public void inputChangedListener(AjaxBehaviorEvent event) {
+		logger.info("Event-Behavior: " + event.getBehavior());
+		AjaxBehavior behavior = (AjaxBehavior) event.getBehavior();
+	}
+	
 	
 	@PostConstruct
 	public void init() {

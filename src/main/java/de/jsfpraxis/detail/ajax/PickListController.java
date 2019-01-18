@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -38,6 +39,17 @@ public class PickListController implements Serializable {
 		}
 	}
 
+	public void clickListener(AjaxBehaviorEvent event) {
+		System.out.println(event.getComponent().getClientId());
+		System.out.println(event.getComponent().getId());
+		if (event.getComponent().getId().equals("addToRight")) {
+			addToRight();
+		} else if (event.getComponent().getId().equals("addToLeft")) {
+			addToLeft();
+		}
+	}
+
+	
 	// Getter und Setter
 	public List<String> getLeft() {
 		return left;

@@ -16,19 +16,17 @@
 	<ui:define name="main">	
 	
 		<h:panelGrid columns="2">
-			<f:facet name="header">Pick-List</f:facet>
+			<f:facet name="header">Pick-List 1</f:facet>
 			<h:panelGrid columns="3" style="width: 30%; margin: 0 auto;">
 				<h:selectOneListbox id="left" value="#{pickListController.selectedLeft}" style="height: 7em;">
 					<f:selectItems value="#{pickListController.left}" />
 				</h:selectOneListbox>
 				<h:panelGroup>
-					<h:commandButton action="#{pickListController.addToRight}" value="&gt;">
-						<f:ajax execute="left" render="left right" />
-					</h:commandButton>
-					<br/>
-					<h:commandButton action="#{pickListController.addToLeft}" value="&lt;">
-						<f:ajax execute="right" render="left right" />
-					</h:commandButton>
+					<f:ajax execute="left right" render="left right" listener="#{pickListController.clickListener}">
+						<h:commandButton id="addToRight" value="&gt;" />
+						<br/>
+						<h:commandButton id="addToLeft" value="&lt;" />
+					</f:ajax>
 				</h:panelGroup>				
 				<h:selectOneListbox id="right" value="#{pickListController.selectedRight}" style="height: 7em;">
 					<f:selectItems value="#{pickListController.right}" />
