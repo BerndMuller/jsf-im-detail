@@ -17,6 +17,7 @@
 		<br/><br/>
 	
 		<h:panelGrid columns="2">
+			<f:ajax execute="firstname lastname" render="whole" event="click" disabled="true" />
 			<f:facet name="header">&lt;f:ajax&gt; in &lt;h:commandButton&gt;</f:facet>
 			Vorname:	
 			<h:inputText id="firstname" value="#{ajaxController.customer.firstName}" />
@@ -26,7 +27,10 @@
 				<!-- 
 				<f:ajax execute="@form" render="@form" />
 				 -->
-				<f:ajax execute="firstname lastname" render="whole"  />
+				<f:ajax execute="firstname lastname" render="whole" />
+				<!--  
+				<f:ajax execute="firstname lastname" render="whole" event="mouseover" />
+				-->
 			</h:commandButton>
 			<h:panelGroup />
 			Kompletter Name:
@@ -39,11 +43,11 @@
 			<f:facet name="header">&lt;f:ajax&gt; in &lt;h:inputText&gt;</f:facet>
 			Vorname:	
 			<h:inputText id="firstname2" value="#{ajaxController.customer.firstName}">
-				<f:ajax execute="@this" render="whole2" listener="#{ajaxController.inputChangedListener}" />
+				<f:ajax execute="@this" render="whole2" listener="#{ajaxController.ajaxListener}" />
 			</h:inputText>
 			Nachname:
 			<h:inputText id="lastname2" value="#{ajaxController.customer.lastName}">
-				<f:ajax execute="@this" render="whole2" />
+				<f:ajax execute="@this" render="whole2"  listener="#{ajaxController.ajaxListener}" />
 			</h:inputText>
 			Kompletter Name:
 			<h:outputText id="whole2" value="#{ajaxController.customer.firstName} #{ajaxController.customer.lastName}" />
@@ -53,7 +57,7 @@
 
 		<h:panelGrid columns="2">
 			<f:facet name="header">&lt;f:ajax&gt; um &lt;h:inputText&gt; und keyup</f:facet>
-			<f:ajax event="keyup" execute="firstname3 lastname3" render="whole3">
+			<f:ajax event="keyup" execute="firstname3 lastname3" render="whole3"  listener="#{ajaxController.ajaxListener}">
 				Vorname:	
 				<h:inputText id="firstname3" value="#{ajaxController.customer.firstName}" />
 				Nachname:
