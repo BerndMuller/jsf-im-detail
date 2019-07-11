@@ -79,12 +79,21 @@ public class ExpressionLanguageController {
 		if (elInput == null) {
 			return;
 		}
+		Object value = facesContext.getApplication().evaluateExpressionGet(facesContext, "#{" + elInput + "}", Object.class);
+		elOutput = value + " vom Typ " + value.getClass().getSimpleName();
+	}
+
+	/* Alternative */
+	public void evalELInput2() {
+		if (elInput == null) {
+			return;
+		}
 		ExpressionFactory expressionFactory = facesContext.getApplication().getExpressionFactory();
 		ELContext el = facesContext.getELContext();
 		Object value = expressionFactory.createValueExpression(el, "#{" + elInput + "}", Object.class).getValue(el);
 		elOutput = value + " vom Typ " + value.getClass().getSimpleName();
 	}
-	
+
 	public void evalJavaScriptInput() {
 		if (javascriptInput == null) {
 			return;
